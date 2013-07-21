@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <title>Force-Directed Layout</title>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.js"></script>
+    <style>
+      body, html{
+        margin: 0;
+        padding: 0;
+        font-family: helvetica, arial, "sans-serif";
+        font-size: 1em;
+      }
+      .column-label { 
+        text-anchor: middle;
+        fill: black;
+        font-size: 1em;
+      }
+      .row-label { 
+        text-anchor: middle;
+        fill: black;
+        font-size: 1em;
+      }
+      h1{
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1> Simpsons Paradox </h1>
+    <script type="text/javascript">
+
+var w = window.innerWidth
+  , h = window.innerHeight - 100
+  , fill = d3.scale.category10()
+  , speed = 0
+  , allNodes = []
+  , allFoci = []
+  , allForces = []
+  , svg = d3.select('body').append('svg')
+      .attr('width', w)
+      .attr('height', h)
+
+
+function clusterFoci(foci, numerator, denominator, classed){
+  // clump destination
+  var foci = {
+    id : 1
+    , x : foci.x
+    , y : foci.y
+    , charge: 10
+    , fixed : true
+  }
+    , nodes = d3.range(denominator).map(function(d){
+        return { 
+          id : d < numerator ? 1 : 0 
+          , x : d < numerator ? 0 : w
+          , y : Math.random() * h
+          , charge : -20
+          , foci : foci
+        }
+      })
+
+    , links = nodes.map(function(node){
+      return { source: foci, target : node }
+    })
+
+  allNodes.push.apply(allNodes, nodes)
+  nodes.push(foci)
+
+  allFoci.push(foci)
+
+  var force = d3.layout.force()
+    .nodes(nodes)
+    .links(links)
+    .gravity(0.0)
+    .size([w, h])
+    .linkDistance(0)
+    .linkStrength(0.7)
+    .friction(0.4)
+    .charge(function(d, i){ return d.charge })
+  
+  allForces.push(force)
+
+  force.on('tick', function(e){
+    svg.selectAll('circle' + classed)
+      .attr('cx', function(d) { return d.x })
+      .attr('cy', function(d) { return d.y })
+  })
+
+  svg.selectAll('circle' + classed)
+    .data(nodes.slice(0,-1))
+    .enter().append('circle')
+      .attr('class', classed.split('.').join(' '))
+      .attr('cx', function(d) { return d.x })
+      .attr('cy', function(d) { return d.y })
+      .attr('r', 2)
+      .style('fill', function(d) { return fill(d.id) })
+      .style('stroke', function(d) { return d3.rgb(fill(d.id)).darker(2) })
+      .style('stroke-width', 1)
+
+  force.start()
+}
+
+
+clusterFoci({ x : w / 4, y : h / 3 }, 12, 48, '.f1.node' )
+clusterFoci({ x : w / 4 * 2, y : h / 3 }, 183, 582, '.f2.node' )
+clusterFoci({ x : w / 4, y : h / 3 * 2 }, 104, 411, '.f3.node' )
+clusterFoci({ x : w / 4 * 2, y : h / 3 * 2 }, 163, 495, '.f4.node' )
+
+
+// var i = 4
+// function cooldown(){
+//   if(--i!==0) return
+//   // done
+// }
+
+
+setTimeout(function(){
+  allForces.map(function(force){
+    force.stop()
+  })
+    var foci1 = {
+      x : w / 4 * 3
+      , y : h / 3 * 1
+      , charge : 10
+      , fixed : true
+    }
+    , foci2 = {
+      x : w / 4 * 3
+      , y : h / 3 * 2
+      , charge : 10
+      , fixed : true
+    }
+    , links = allNodes.map(function(node) {
+      return { source : foci, target : node }
+    })
+    , force = d3.layout.force()
+    .nodes(allNodes.concat([foci1]).concat([foci2]))
+    .links(links)
+    .gravity(0.0)
+    .size([w, h])
+    .linkDistance(0)
+    .linkStrength(0.7)
+    .friction(0.4)
+    .charge(function(d, i){ return d.charge })
+    .on('tick', function(e){
+      svg.selectAll('circle.node')
+        .attr('cx', function(d) { return d.x })
+        .attr('cy', function(d) { return d.y })
+    })
+    .start()
+}, 2000)
+
+
+// todo: change root `em` size depending on window size
+d3.select('body').style('font-size', '1em')
+
+// column headers
+svg.selectAll('text.column-label')
+  .data(['1995', '1996', 'combined'])
+  .enter().append('text')
+    .attr({
+      x : function(d, i){ return w / 4 * i + w / 4 }
+      , y : 20
+      , anchor : 'middle'
+      , class : 'column-label'
+    }).text(function(d){ return d})
+
+svg.selectAll('text.row-label')
+  .data(['Derek Jeter', 'David Justice'])
+  .enter().append('text')
+    .attr({
+      x : 100
+      , y : function(d, i){ return h / 3 * i + h / 3 }
+      , anchor : 'right'
+      , class : 'row-label'
+    }).text(function(d){ return d})
+
+    </script>
+  </body>
+</html>
