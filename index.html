@@ -21,6 +21,10 @@
         fill: black;
         font-size: 1em;
       }
+      .foci{
+        /* uncomment out to show foci for debugging */
+        display: none;
+      }
       h1{
         text-align: center;
       }
@@ -44,23 +48,32 @@ var w = window.innerWidth
       , 'combined' : [149, 551]
     }
   }
-  , fill = d3.scale.category10()
+  , fill = function(d){
+    if(d) return 'black'
+    else return 'steelblue'
+  }
   , foci
   , links
+  , duration = 4000
   , cols = Object.keys(data[Object.keys(data)[0]])
   , rows = Object.keys(data)
   , svg = d3.select('body').append('svg')
       .attr('width', w)
       .attr('height', h)
-  , force = d3.layout.force()
-    .nodes([])
-    .links([])
-    .gravity(0)
-    .size([w, h])
-    .linkDistance(0)
-    .linkStrength(2)
-    .friction(0.1)
-    .charge(function(d, i){ return d.charge })
+  , createForce = function(){
+    return d3.layout.force()
+      .nodes([])
+      .links([])
+      .gravity(0)
+      .size([w, h])
+      .linkDistance(0)
+      .linkStrength(2)
+      .friction(0.1)
+      .charge(function(d, i){ return d.charge })
+  }
+  , force1 = createForce()
+  , force2 = createForce()
+  , force = createForce()
   , fociLinks = function(nodes, foci){
     return nodes.map(function(node){
       return { source : node, target : foci }
@@ -80,14 +93,15 @@ var w = window.innerWidth
   , createFoci = function(x, y, name){
     return { x : x, y : y, charge : 0, fixed : true, name : name }
   }
+  , focis = {}
+  , rowClass = function(row){ return rows[row].replace(' ', '').toLowerCase() }
+  
 
 // create all the focal points for the different nodes
-var focis = {}
-var foci_arr = []
 d3.range(6).map(function(d){
   var col = (d % 3)
     , row = ~~(d / 3)
-    , row_class = rows[row].replace(' ', '').toLowerCase()
+    , row_class = rowClass(row)
     , x = (col + 1) * w / 4
     , y = (row + 1) * h / 3
     , foci1 = createFoci( x,  y, row_class + '-' + cols[col] + ' foci foci-0')
@@ -96,7 +110,6 @@ d3.range(6).map(function(d){
   focis[rows[row]][cols[col]] = [foci1, foci2]
   force.nodes().push(foci1)
   force.nodes().push(foci2)
-  foci_arr.push(foci1,foci2)
 })
 
 
@@ -134,35 +147,64 @@ svg.selectAll('circle' + '.node')
 
 force.start()
 
-d3.select('.foci')
-  .transition()
-  .attr('cx', function(d){
-    console.log(d)
-    return 0
-  })
 
+var loop = function(){
+  setTimeout(function(){
+    setTimeout(function(){
+      for(var row in rows){
+        cols.slice(0, -1).forEach(function(d, i){
+          animFoci('.' + rowClass(row) + '-' + d + '.foci-0', { x : w / 4 * 1 }, duration)
+          animFoci('.' + rowClass(row) + '-' + d + '.foci-1', { x : w / 4 * 2 }, duration)
+        })
+      }
+      setTimeout(function(){
+        for(var row in rows){
+          cols.slice(0, -1).forEach(function(d, i){
+            animFoci('.' + rowClass(row) + '-' + d, { x : w / 4 * 3 }, duration)
+          })
+        }
+        setTimeout(function(){
+          setTimeout(function(){
+            for(var row in rows){
+              cols.slice(0, -1).forEach(function(d, i){
+                animFoci('.' + rowClass(row) + '-' + d + '.foci-0', { x : w / 4 * 1 }, duration)
+                animFoci('.' + rowClass(row) + '-' + d + '.foci-1', { x : w / 4 * 2 }, duration)
+              })
+            }
+            setTimeout(function(){
+              for(var row in rows){
+                cols.slice(0, -1).forEach(function(d, i){
+                  animFoci('.' + rowClass(row) + '-' + d + '.foci-0', { x : w / 4 * (1 + i) }, duration)
+                  animFoci('.' + rowClass(row) + '-' + d + '.foci-1', { x : w / 4 * (1 + i) }, duration)
+                })
+              }
+              loop()
+            }, duration)
+          }, duration)
+        }, duration)
+      }, duration)
+    }, duration)
+  }, duration)
+}
 
-// setTimeout(function(){
-//   moveFoci(focis[rows[0]][cols[0]][1], { x : w / 4 * 2 })
-//   moveFoci(focis[rows[0]][cols[1]][0], { x : w / 4 * 1 })
-//   moveFoci(focis[rows[1]][cols[0]][1], { x : w / 4 * 2 })
-//   moveFoci(focis[rows[1]][cols[1]][0], { x : w / 4 * 1 })
-//   setTimeout(function(){
-//     for(var row in rows){
-//       for(var col in cols){
-//         moveFoci(focis[rows[row]][cols[col]][0], { x : w / 4 * 3 })
-//         moveFoci(focis[rows[row]][cols[col]][1], { x : w / 4 * 3 })
-//       }
-//     }
-//   }, 1000)
-// }, 5000)
+loop()
 
-
-function moveFoci(foci, pos){
-  if(!pos.x) pos.x = foci.x
-  if(!pos.y) pos.y = foci.y
-  foci.px = foci.x = pos.x
-  foci.py = foci.y = pos.y
+function animFoci(foci, pos, duration){
+  if(duration === undefined) duration = 1000
+  d3.selectAll(foci)
+    .transition()
+    .duration(duration)
+    .ease("cubic")
+    .tween('dataTweet', function(d){
+      if(!pos.x) pos.x = d.x
+      if(!pos.y) pos.y = d.y
+      var ix = d3.interpolate(d.x, pos.x)
+      var iy = d3.interpolate(d.y, pos.y)
+      return function(t){
+        d.x = d.px = ix(t)
+        d.y = d.py = iy(t)
+      }
+    })
   force.start()
 }
 
