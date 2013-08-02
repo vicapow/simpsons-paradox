@@ -1,0 +1,39 @@
+.column-label { 
+  text-anchor: middle;
+  fill: black;
+  font-size: 1em;
+}
+
+
+.row-label { 
+  text-anchor: middle;
+  fill: black;
+  font-size: 1em;
+}
+
+.node{
+  display: block;
+}
+.foci{
+  /* uncomment out to show foci for debugging */
+  display: none;
+}
+
+h1{
+  text-align: center;
+}
+
+.lead{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.jumbotron{
+  margin-top: 20px;
+  padding-bottom: 30px;
+}
+
+blockquote{
+  background-color: #eee
+}

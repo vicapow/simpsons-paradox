@@ -1,0 +1,532 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"key",
+				"keyRelabel"
+			],
+			[
+				"parseD",
+				"parseDaily"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"dire",
+				"directive	AngularJS Long"
+			],
+			[
+				"dir",
+				"directive	AngularJS Long"
+			],
+			[
+				"con",
+				"config	AngularJS"
+			],
+			[
+				"directive",
+				"directive	AngularJS Short"
+			],
+			[
+				"direct",
+				"directive	AngularJS Short"
+			],
+			[
+				"direc",
+				"directive	AngularJS Short"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 13677,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "todo.txt",
+			"settings":
+			{
+				"buffer_size": 299,
+				"line_ending": "Unix",
+				"name": "todo:"
+			}
+		},
+		{
+			"file": "bootstrap/css/bootstrap.css",
+			"settings":
+			{
+				"buffer_size": 82031,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "simp-style.css",
+			"settings":
+			{
+				"buffer_size": 454,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/lewis/Documents/github/juju/jumbotron/index.html",
+			"settings":
+			{
+				"buffer_size": 4210,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/lewis/Documents/github/juju/jumbotron/jumbotron.css",
+			"settings":
+			{
+				"buffer_size": 729,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"emmet",
+				"Emmet: Match Pair (outward)"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"bro",
+				"Preferences: Browse Packages"
+			],
+			[
+				"ena",
+				"Package Control: Enable Package"
+			],
+			[
+				"",
+				"AngularJS: Look Up Definition"
+			],
+			[
+				"an",
+				"AngularJS: Look Up Definition"
+			],
+			[
+				"angu",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"brow",
+				"Preferences: Browse Packages"
+			],
+			[
+				"browse",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/lewis/Documents/github/juju/jumbotron/jumbotron.css",
+		"/home/lewis/Documents/github/juju/starter-template/index.html",
+		"/home/lewis/Documents/github/juju/bootstrap/css/juju.css",
+		"/home/lewis/Documents/github/juju/bootstrap/css/bootstrap.css",
+		"/home/lewis/Documents/github/Diagnostics/data.json",
+		"/home/lewis/Documents/github/juju/carousel/index.html",
+		"/home/lewis/Documents/github/bootstrap/index.html",
+		"/home/lewis/Documents/github/vudlab-website/website/index.html",
+		"/home/lewis/Dropbox/story1.txt",
+		"/home/lewis/Documents/github/dash/app/index.html",
+		"/home/lewis/Documents/github/dash/app/scripts/controllers/main.js",
+		"/home/lewis/Documents/github/Diagnostics/common.js",
+		"/home/lewis/Documents/github/dash/app/scripts/services/services.js",
+		"/home/lewis/Documents/github/Diagnostics/view1.js",
+		"/home/lewis/Documents/github/Diagnostics/common2.js",
+		"/home/lewis/Documents/github/Diagnostics/interface.html",
+		"/home/lewis/Documents/github/dash/app/views/main.html",
+		"/home/lewis/Documents/github/dash/app/scripts/app.js",
+		"/home/lewis/Documents/github/angularjs-book/chapter8/server-communication/services.js",
+		"/home/lewis/.config/sublime-text-3/Packages/User/AngularJS-js-completions.sublime-settings",
+		"/home/lewis/Documents/github/Diagnostics/new1.js",
+		"/home/lewis/Documents/github/Diagnostics/interface-1.html",
+		"/home/lewis/Documents/github/Diagnostics/new2.js",
+		"/home/lewis/Documents/github/ViaApp/app/index.html",
+		"/home/lewis/Documents/github/angularjs-book/chapter4/guthub/app/views/list.html",
+		"/home/lewis/Documents/github/angularjs-book/chapter4/guthub/app/scripts/directives/directives.js",
+		"/home/lewis/Documents/github/angularjs-book/chapter4/guthub/app/views/viewRecipe.html",
+		"/home/lewis/Documents/github/angularjs-book/chapter4/guthub/app/views/recipeForm.html",
+		"/home/lewis/Documents/Learn/index.html",
+		"/home/lewis/Documents/Learn/controllers/main.js",
+		"/home/lewis/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/home/lewis/Documents/github/sfpark/locParser.js",
+		"/home/lewis/Documents/Learn/zippy.html",
+		"/home/lewis/Documents/Learn/controllers/zippy.html",
+		"/home/lewis/Documents/Learn/list.html",
+		"/home/lewis/Documents/Learn/detail.html",
+		"/home/lewis/.config/sublime-text-3/Packages/AngularJS/AngularJS-js-completions.sublime-settings",
+		"/home/lewis/.config/sublime-text-3/Packages/User/AngularJS-completions.sublime-settings",
+		"/home/lewis/.config/sublime-text-3/Packages/AngularJS/AngularJS-completions.sublime-settings",
+		"/home/lewis/.config/sublime-text-3/Packages/AngularJS/AngularJS-sublime-package.sublime-settings",
+		"/home/lewis/.config/sublime-text-3/Packages/User/AngularJS-sublime-package.sublime-settings",
+		"/home/lewis/.cache/.fr-Sxj2Lw/Main.sublime-menu",
+		"/home/lewis/.cache/.fr-YM5yIL/JavaScript.sublime-settings",
+		"/home/lewis/Documents/Learn/app.js",
+		"/home/lewis/Documents/github/angular/index.html",
+		"/home/lewis/Documents/first/app/views/main.html",
+		"/home/lewis/Documents/asdf.js",
+		"/home/lewis/.config/sublime-text-3/Packages/User/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"actually",
+			"height",
+			"Dept ",
+			"font",
+			"jumbotron",
+			"html",
+			"text",
+			"font-size",
+			"quote",
+			"hero",
+			"active",
+			"keyrelabel",
+			"create",
+			"createtimes",
+			"$scope.",
+			"getdata",
+			"$scope.",
+			"status",
+			"http",
+			"control",
+			"controller",
+			"edit",
+			"dataset",
+			"app"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13677,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1283,
+								1340
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"word_separators": "./\\\\()\\\"\\'-:,.;<>~!@#%^&*|+=[]{}`~?"
+						},
+						"translation.x": 0.0,
+						"translation.y": 54.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "todo.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 299,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								299,
+								299
+							]
+						],
+						"settings":
+						{
+							"auto_name": "todo:",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "bootstrap/css/bootstrap.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 82031,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3720,
+								3720
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5024.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "simp-style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 454,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/home/lewis/Documents/github/juju/jumbotron/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4210,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2098,
+								2098
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1002.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/home/lewis/Documents/github/juju/jumbotron/jumbotron.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 729,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								310,
+								310
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"project": "simpsons.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 202.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

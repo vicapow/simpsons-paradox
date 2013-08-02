@@ -1,45 +1,62 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<html>
+<html lang="en">
   <head>
-    <meta name = "viewport" content = "width=700">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Force-Directed Layout</title>
     <script type="text/javascript" src="d3.js"></script>
     <script type="text/javascript" src="underscore.js"></script>
-    <style>
-      body, html{
-        margin: 0;
-        padding: 0;
-        font-family: 'Droid Sans', helvetica, arial, sans-serif;
-        font-size: 1em;
-      }
-      .column-label { 
-        text-anchor: middle;
-        fill: black;
-        font-size: 1em;
-      }
-      .row-label { 
-        text-anchor: middle;
-        fill: black;
-        font-size: 1em;
-      }
-      .node{
-        display: block;
-      }
-      .foci{
-        /* uncomment out to show foci for debugging */
-        display: none;
-      }
-      h1{
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="simp-style.css">
   </head>
   <body>
+    <div class="container">
+      
+      <div class="jumbotron">
+        <h1>Simpson's Paradox</h1>
+        <p class="lead">Girls gone average. <br> Averages gone wild.</p> 
+      </div>
+      
+      <h3>Definition</h3>
+      <div class="row">
+        <div class="col-lg-5 ">
+          <p>Sometimes statistics lie, but more often humans mishear them. Like with Simpson's Paradox, which Wikipedia says is:</p>
+          <blockquote><p>a paradox in which a trend that appears in different groups of data disappears when these groups are combined, and the reverse trend appears for the aggregate data.</p></blockquote>
+          <p>Simpson's paradox is especially pernicious when we talk about causality. To the right, x appears to have a negative effect on y, but actually the opposite is true when you account for  color. </p>
+          <p><strong>include batting average table here.</strong></p>
+        </div>
+        <div class="col-lg-5">
+          <img src="bootstrap/img/simpsons.png" height="300px" alt="trend chart" class="img-rounded">
+          <p class='col-offset-1'><em>Not really a paradox. Just sloppy statistics <br>Not really Simpson's. Just attributed to him.</em></p>
+        </div>
+      </div>
+
+      <h3>Berkeley Sex Discrimination Suit</h3>
+      <div class="row">
+        <div class="col-lg-5 ">
+          <p>In 1973, University of California-Berkeley (where me and Victor live) </p>
+          <blockquote><p>a paradox in which a trend that appears in different groups of data disappears when these groups are combined, and the reverse trend appears for the aggregate data.</p></blockquote>
+          <p>Simpson's paradox is especially pernicious when we talk about causality. To the right, x appears to have a negative effect on y, but actually the opposite is true when you account for  color. </p>
+        </div>
+        <div class="col-lg-5">
+          <img src="http://placehold.it/350x250&text=pie chart of admissions">
+        </div>
+      </div>
+      
+      <div class="container vis">
+        
+      </div>
+
+    </div><!-- /.container -->  
+
+
+
+
+
     <script type="text/javascript">
 
-var w = window.innerWidth
-  , h = window.innerHeight - 100
+var w = window.innerWidth*.7
+  , h = 600
   , tempo = 500
   // , data = {
   //   'Derek Jeter' : {
@@ -63,20 +80,20 @@ var w = window.innerWidth
   // }
   , data = {
     'Men' : {
-      'Dept A' : [51, 82]
-      , 'Dept B' : [35, 56]
-      , 'Dept C' : [12, 33]
-      , 'Dept D' : [14, 42]
-      , 'Dept E' : [5, 19]
-      , 'Dept F' : [2, 27]
+      'A' : [51, 82]
+      , 'B' : [35, 56]
+      , 'C' : [12, 33]
+      , 'D' : [14, 42]
+      , 'E' : [5, 19]
+      , 'F' : [2, 27]
     }
     , 'Women' : {
-      'Dept A' : [9, 11]
-      , 'Dept B' : [2, 3]
-      , 'Dept C' : [20, 59]
-      , 'Dept D' : [13, 38]
-      , 'Dept E' : [9, 39]
-      , 'Dept F' : [2, 34]
+      'A' : [9, 11]
+      , 'B' : [2, 3]
+      , 'C' : [20, 59]
+      , 'D' : [13, 38]
+      , 'E' : [9, 39]
+      , 'F' : [2, 34]
     }
   }
   // return the combined ration for a row in the data
@@ -126,7 +143,7 @@ var w = window.innerWidth
     if(d) return 'black'
     else return 'steelblue'
   }
-  , svg = d3.select('body').append('svg')
+  , svg = d3.select('.vis').append('svg')
       .attr('width', w)
       .attr('height', h)
   , createForce = function(){
@@ -186,7 +203,7 @@ _.each(rows, function(row_val, row){
 
 // hide the foci
 svg.selectAll('circle.foci')
-  .style('display', 'none')
+  .style('display', 'none');
 
 
 function setupNodeAndLinks(force, row){
@@ -250,7 +267,7 @@ var cl = function(row, col, fociId){
     }
   }
   , ratioLabelFormat = function(d){ 
-    return d3.format('.0%')(d[0] / d[1]) + ' accepted'
+    return d3.format('.0%')(d[0] / d[1]) 
   }
   
   , timeline = [
@@ -429,7 +446,7 @@ function animFoci(foci, pos, duration){
 // Labels
 
 // todo: change root `em` size depending on window size
-d3.select('body').style('font-size', '1em')
+// d3.select('body').style('font-size', '1em')
 
 // column headers
 svg.selectAll('text.column-label')

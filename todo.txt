@@ -1,0 +1,8 @@
+todo:
+
+add tooltip that displays gender division per department, overall acceptance rate for that department, and percent of gender who applied to that department.
+make a line plot.
+clean up d3 code so the circles are in a group.
+add very light banding to departments
+add label to the top axis that says "departments."
+eliminate enormous padding above men.
