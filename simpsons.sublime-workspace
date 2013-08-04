@@ -51,7 +51,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 13677,
+				"buffer_size": 14739,
 				"line_ending": "Unix"
 			}
 		},
@@ -59,7 +59,7 @@
 			"file": "todo.txt",
 			"settings":
 			{
-				"buffer_size": 299,
+				"buffer_size": 417,
 				"line_ending": "Unix",
 				"name": "todo:"
 			}
@@ -284,15 +284,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13677,
+						"buffer_size": 14739,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1283,
-								1340
+								1353,
+								1353
 							]
 						],
 						"settings":
@@ -303,7 +303,7 @@
 							"word_separators": "./\\\\()\\\"\\'-:,.;<>~!@#%^&*|+=[]{}`~?"
 						},
 						"translation.x": 0.0,
-						"translation.y": 54.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -314,15 +314,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 299,
+						"buffer_size": 417,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								299,
-								299
+								417,
+								417
 							]
 						],
 						"settings":

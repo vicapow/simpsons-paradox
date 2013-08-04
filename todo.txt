@@ -1,8 +1,15 @@
 todo:
 
 add tooltip that displays gender division per department, overall acceptance rate for that department, and percent of gender who applied to that department.
-make a line plot.
 clean up d3 code so the circles are in a group.
 add very light banding to departments
 add label to the top axis that says "departments."
 eliminate enormous padding above men.
+add in a part about sex disrimctination in the labor market.
+get a better font
+
+add play buttons
+add tooltip
+add legends
+get a wide image of berkeley and put it before berkeley sex discrimination suit
+get rid of the green emerald favicon
