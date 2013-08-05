@@ -1,10 +1,10 @@
 var blue = '#3498DB',
  red = '#E74C3C',
  black = '#2C3E50'
+var margin = {top: 20, right: 10, bottom: 40, left: 40}
 
-
-var w = window.innerWidth*.7
-  , h = 600
+var w = window.innerWidth*.6
+  , h = 350
   , tempo = 500
   , data = {
     'Men' : {
@@ -72,8 +72,11 @@ var w = window.innerWidth*.7
     else return blue
   }
   , svg = d3.select('.vis').append('svg')
-      .attr('width', w)
-      .attr('height', h)
+      .attr('width', w  + margin.left + margin.right)
+      .attr('height', h + margin.top + margin.bottom)
+  , main = svg.append("g")
+    .attr("class", "main")
+    .attr("transform","translate(" + margin.left + "," + margin.top + ")")
   , createForce = function(){
     return d3.layout.force()
       .nodes([])
@@ -112,7 +115,14 @@ var w = window.innerWidth*.7
   , colClass = function(col){
     return 'col-' + col.replace(/ /g, '').toLowerCase()
   }
-  
+
+var x = d3.scale.ordinal()
+    .domain(['A', 'B', 'C', "D", "E", "F", 'combined'])
+    .rangeRoundBands([0, w], .1);
+
+var y = d3.scale.ordinal()
+    .domain(["Men", "Women"])
+    .rangeRoundBands([h, 0], .1);
 
 // create all the focal points for the different nodes
 _.each(rows, function(row_val, row){
@@ -128,12 +138,6 @@ _.each(rows, function(row_val, row){
     forces[row].nodes().push(foci1, foci2)
   })
 })
-
-// hide the foci
-svg.selectAll('circle.foci')
-  .style('display', 'none');
-
-
 
 function setupNodeAndLinks(force, row){
   cols.forEach(function(col){
@@ -156,13 +160,15 @@ function setupNodeAndLinks(force, row){
 _.each(forces, function(force, i){
   setupNodeAndLinks(force, rows[i] )
   force.on('tick', function(e){
-    svg.selectAll('circle.' + rowClass(rows[i]))
+    main.selectAll('circle.' + rowClass(rows[i]))
       .attr('cx', function(d) { return d.x })
       .attr('cy', function(d) { return d.y })
   })
 })
 
-svg.selectAll('circle' + '.node')
+
+
+main.selectAll('circle' + '.node')
   .data(_.reduce(forces
     , function(nodes, force) { return nodes.concat(force.nodes()); }, []))
   .enter().append('circle')
@@ -171,12 +177,10 @@ svg.selectAll('circle' + '.node')
     .attr('cy', function(d) { return d.y })
     .attr('r', 3 + 100 / num_nodes )
     .style('fill', function(d) { return fill(d.id) })
-    .style('stroke', black)
+    .style('stroke', 'white')
     .style('stroke-width', 1)
 
 _.each(forces, function(force){ force.start() })
-
-
 
 var cl = function(row, col, fociId){
     fociId = (fociId !== undefined) ? '.foci-' + fociId : ''
@@ -214,7 +218,7 @@ var cl = function(row, col, fociId){
           })
         }
       }
-      var ratios = svg.selectAll('text.year-ratio')
+      var ratios = main.selectAll('text.year-ratio')
       ratios.remove()
       ratios.data(labels)
         .enter().append('text')
@@ -238,7 +242,7 @@ var cl = function(row, col, fociId){
     , tempo * 10
     , function(){
       var dur = 250
-      var ratios = svg.selectAll('text.year-ratio')
+      var ratios = main.selectAll('text.year-ratio')
         .transition()
         .duration(dur)
         .style('opacity','0.0')
@@ -278,7 +282,7 @@ var cl = function(row, col, fociId){
           , foci: cl(i, 0)
         }
       })
-      var ratios = svg.selectAll('text.combined-ratio')
+      var ratios = main.selectAll('text.combined-ratio')
       ratios.remove()
       ratios.data(labels)
         .enter().append('text')
@@ -303,7 +307,7 @@ var cl = function(row, col, fociId){
     // hide the combined ration labels
     , function(){
       var dur = 250
-      var ratios = svg.selectAll('text.combined-ratio')
+      var ratios = main.selectAll('text.combined-ratio')
         .transition()
         .duration(dur)
         .style('opacity','0.0')
@@ -377,29 +381,25 @@ function animFoci(foci, pos, duration){
 // todo: change root `em` size depending on window size
 // d3.select('body').style('font-size', '1em')
 
-// column headers
-svg.selectAll('text.column-label')
-  .data(cols.concat(['combined']))
-  .enter().append('text')
-    .attr({
-      x : function(d, i){ return w / (cols.length + 2) * (i + 1) }
-      , y : 20
-      , anchor : 'middle'
-      , class : 'column-label'
-    }).text(function(d){ return d})
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
 
-svg.selectAll('text.row-label')
-  .data(rows)
-  .enter().append('text')
-    .attr({
-      x : 70
-      , y : function(d, i){ return h / (rows.length + 1) * (i + 1) }
-      , anchor : 'right'
-      , class : 'row-label'
-    }).text(function(d){ return d})
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("right"); 
+
+var gXAxis = svg.append("g")
+    .attr("transform","translate(" + margin.left + "," + 0 + ")" )
+    .attr("class", "x-axis-force")
+    .call(xAxis)
+
+var gYAxis = svg.append("g")
+    .attr("class", "y-axis-force")
+    .call(yAxis)
 
 svg.append('text')
-  .text('1 ball = 10 people. ')
+  .text('1 ball = 10 applicants ')
   .attr({
     x : 10
     , y : h - 10

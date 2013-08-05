@@ -46,11 +46,6 @@ var svg = d3.select("#line-chart").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-svg.append("g")
-    .attr("class", "x-axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
-
 var gYAxis = svg.append("g")
     .attr("class", "y-axis")
     .call(yAxis)
@@ -62,8 +57,9 @@ gYAxis.append("text")
   .text("y");
 
 var gXAxis = svg.append("g")
-    .attr("class", "y-axis")
-    .call(yAxis)
+    .attr("class", "x-axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis)
 
 gXAxis.append("text")
   .attr("transform", " translate(" + width/2 + "," + (height + 35) +  ")")

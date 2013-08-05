@@ -56,3 +56,14 @@ blockquote p{
 .arc path {
   stroke: #fff;
 }
+
+.y-axis-force path,
+.x-axis-force path {
+  fill: none;
+  stroke: #2C3E50;
+  shape-rendering: crispEdges;
+}
+.x-axis-force .domain,
+.y-axis-force .domain {
+  stroke: none;
+}
