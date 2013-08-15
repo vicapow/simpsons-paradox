@@ -115,14 +115,13 @@ var w = window.innerWidth*.6
   , colClass = function(col){
     return 'col-' + col.replace(/ /g, '').toLowerCase()
   }
-
-var x = d3.scale.ordinal()
+  , x = d3.scale.ordinal()
     .domain(['A', 'B', 'C', "D", "E", "F", 'combined'])
-    .rangeRoundBands([0, w], .1);
+    .rangeRoundBands([0, w], .1)
 
-var y = d3.scale.ordinal()
+  , y = d3.scale.ordinal()
     .domain(["Men", "Women"])
-    .rangeRoundBands([h, 0], .1);
+    .rangeRoundBands([h, 0], .1)
 
 // create all the focal points for the different nodes
 _.each(rows, function(row_val, row){
@@ -159,6 +158,7 @@ function setupNodeAndLinks(force, row){
 
 _.each(forces, function(force, i){
   setupNodeAndLinks(force, rows[i] )
+  force.alpha(1)
   force.on('tick', function(e){
     main.selectAll('circle.' + rowClass(rows[i]))
       .attr('cx', function(d) { return d.x })
@@ -361,7 +361,7 @@ function animFoci(foci, pos, duration){
     .transition()
     .duration(duration)
     .ease('cubic-in-out')
-    .tween('dataTweet', function(d){
+    .tween('dataTween', function(d){
       if(!pos.x) pos.x = d.px
       if(!pos.y) pos.y = d.py
       var ix = d3.interpolate(d.x, pos.x)
