@@ -125,12 +125,12 @@ var w = window.innerWidth*.6
     return 'col-' + col.replace(/ /g, '').toLowerCase()
   }
   , x = d3.scale.ordinal()
-    .domain(['A', 'B', 'C', "D", "E", "F", 'combined'])
+    .domain(cols.concat('combined'))
     .rangeRoundBands([margin.left, w + margin.left + margin.right], .1)
 
   , y = d3.scale.ordinal()
-    .domain(["Men", "Women"])
-    .rangeRoundBands([h + margin.bottom + margin.top, margin.top], .1)
+    .domain(rows)
+    .rangeRoundBands([margin.top, h + margin.bottom + margin.top], .1)
 
 // create all the focal points for the different nodes
 _.each(rows, function(row_val, row){
@@ -378,7 +378,7 @@ var cl = function(row, col, fociId){
       _.each(rows, function(row_val, row){
         _.each(cols, function(col_val, col){
           animFoci( cl(row, col) + '.foci-0', { x : x('combined') - 200 }, dur)
-          animFoci( cl(row, col) + '.foci-1', { x : x('combined') + 50 }, dur)
+          animFoci( cl(row, col) + '.foci-1', { x : x('combined') + 20 }, dur)
         })
       })
       return dur
