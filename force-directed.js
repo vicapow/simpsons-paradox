@@ -71,7 +71,7 @@ var w = window.innerWidth*.6
     if(d) return red
     else return blue
   }
-  , svg = d3.select('.vis').append('svg')
+  , svg = d3.select('.vis svg')
       .attr('width', w  + margin.left + margin.right)
       .attr('height', h + margin.top + margin.bottom)
   , main = svg.append("g")
@@ -89,9 +89,18 @@ var w = window.innerWidth*.6
       .charge(function(d, i){ return d.charge })
   }
   , forces = _.map(rows, createForce)
-  , linktoFoci = function(nodes, foci){
+  , linkToFoci = function(links, nodes, foci){
+    // a node can only be linked to a single foci
+    _.each(nodes, function(node){
+      for(var i = 0; i < links.length; i++){
+        if(links[i].source === node){
+          links.splice(i, 1)
+          break
+        }
+      }
+    })
     return nodes.map(function(node){
-      return { source : node, target : foci }
+      links.push({ source : node, target : foci })
     })
   }
   , createNodes = function(num, denom, name){
@@ -101,7 +110,7 @@ var w = window.innerWidth*.6
         , x : d < num ? 0 : w
         , y : Math.random() * h
         , charge : -1 * 10000 / max_nodes_per_ratio
-        , name : name
+        , name : name + ((d < num) ? ' num' : ' denom')
       }
     })
   }
@@ -117,19 +126,19 @@ var w = window.innerWidth*.6
   }
   , x = d3.scale.ordinal()
     .domain(['A', 'B', 'C', "D", "E", "F", 'combined'])
-    .rangeRoundBands([0, w], .1)
+    .rangeRoundBands([margin.left, w + margin.left + margin.right], .1)
 
   , y = d3.scale.ordinal()
     .domain(["Men", "Women"])
-    .rangeRoundBands([h, 0], .1)
+    .rangeRoundBands([h + margin.bottom + margin.top, margin.top], .1)
 
 // create all the focal points for the different nodes
 _.each(rows, function(row_val, row){
   _.each(cols, function(col_val, col){
     var row_class = rowClass(rows[row])
       , col_class = colClass(cols[col])
-      , x = w / (cols.length + 2) * (col + 1)
-      , y = h / (rows.length + 1) * ( row + 1)
+      , x = (w + margin.left + margin.right) / (cols.length + 2) * (col + 1)
+      , y = (h + margin.top + margin.bottom) / (rows.length + 1) * ( row + 1)
       , foci1 = createFoci( x,  y, row_class + ' ' + col_class + ' foci foci-0')
       , foci2 = createFoci( x,  y, row_class + ' ' + col_class + ' foci foci-1')
     if(!focis[rows[row]]) focis[rows[row]] = {}
@@ -147,18 +156,18 @@ function setupNodeAndLinks(force, row){
       , col_class = colClass(col)
       , nodes = createNodes(num, den, row_class + ' ' + col_class)
     force.nodes().push.apply(force.nodes(), nodes)
-    force.links().push.apply(force.links(), linktoFoci(nodes.filter(function(d){ 
-      return d.id === 0 
-    }), fociSet[0] ))
-    force.links().push.apply(force.links(), linktoFoci(nodes.filter(function(d){ 
+    linkToFoci(force.links(), nodes.filter(function(d){
+      return d.id === 0
+    }), fociSet[0] )
+    linkToFoci(force.links(), nodes.filter(function(d){
       return d.id === 1
-    }), fociSet[1] ))
+    }), fociSet[1] )
   })
 }
 
 _.each(forces, function(force, i){
   setupNodeAndLinks(force, rows[i] )
-  force.alpha(1)
+  // force.alpha(1)
   force.on('tick', function(e){
     main.selectAll('circle.' + rowClass(rows[i]))
       .attr('cx', function(d) { return d.x })
@@ -182,9 +191,25 @@ main.selectAll('circle' + '.node')
 
 _.each(forces, function(force){ force.start() })
 
+/**
+  * cl(row, col, [fociId])
+  * generate a class selector for the given row, col and optional fociId
+  */
 var cl = function(row, col, fociId){
-    fociId = (fociId !== undefined) ? '.foci-' + fociId : ''
-    return '.' + rowClass(rows[row]) + '.' + colClass(cols[col] + fociId)
+    fociId = (fociId !== null && fociId !== undefined) ? '.foci-' + fociId : ''
+    col = (col !== null && col !== undefined) ? '.' + colClass(cols[col]) : ''
+    row = (row !== null && row !== undefined) ? '.' + rowClass(rows[row]) : ''
+    return row + col + fociId
+  }
+  , selectNodes = function(selector){
+    var res = []
+    main.selectAll(selector).each(function(d){
+      if(!d instanceof Object){
+        debugger
+      }
+      res.push(d)
+    })
+    return res
   }
   , ratioLabelPos = function(row, col){
     var maxr = 0
@@ -239,7 +264,7 @@ var cl = function(row, col, fociId){
             return col_maxs[d.col] === d.row ? 'bold' : 'normal'
           })
     }
-    , tempo * 10
+    , tempo * 5
     , function(){
       var dur = 250
       var ratios = main.selectAll('text.year-ratio')
@@ -250,17 +275,32 @@ var cl = function(row, col, fociId){
       return dur
     }
     , function(){
-      var dur = tempo * 2
+      var dur = tempo * 1
       for(var row in rows){
-        for(var col in cols){
-          animFoci( cl(row, col) + '.foci-0', { x : w / (cols.length + 2) * (cols.length + 1) - 500 }, dur)
-          // a hack to make the combined edges a bit smoother
-          animFoci( cl(row, col) + '.foci-1', { x : w / (cols.length + 2) * (cols.length + 1) }, dur)
-        }
+        // a hack to make the combined edges a bit smoother
+        animFoci( cl(row) + '.foci-0', { x : x('combined') - 100 }, dur)
+        animFoci( cl(row) + '.foci-1', { x : x('combined') }, dur)
       }
       return dur
     }
-    , tempo * 1
+    // this is a bit of a hack to get the groups of nodes to combine
+    // properly. all we're doing is re-arranging the the links and foci
+    // so that there are only two groups of nodes and foci.
+    // for more about this, see: 
+    , function(){
+      var dur = 1, nodes, numerators, denominators, foci
+      for(var row in rows){
+          numerators = '.' + rowClass(rows[row]) + '.node.num'
+          nodes = selectNodes(numerators)
+          foci = selectNodes( cl(row, null, 0))[0]
+          linkToFoci(forces[row].links(), nodes, foci)
+          denominators = '.' + rowClass(rows[row]) + '.node.denom'
+          nodes = selectNodes(denominators)
+          foci = selectNodes( cl(row, null, 1))[0]
+          linkToFoci(forces[row].links(), nodes, foci)
+      }
+      return dur
+    }
     , function(){
       var dur = tempo * 2
       for(var row in rows){
@@ -303,7 +343,7 @@ var cl = function(row, col, fociId){
             return col_maxs[d.col] === d.row ? 'bold' : 'normal'
           })
     }
-    , tempo * 10
+    , tempo * 5
     // hide the combined ration labels
     , function(){
       var dur = 250
@@ -314,13 +354,31 @@ var cl = function(row, col, fociId){
         .remove()
       return dur
     }
+    , function(){
+      // undo hack from above
+      var dur = 1, nodes, numerator, denominator, foci
+      for(var row in rows){
+        for(var col in cols){
+          numerator = cl(row, col) + '.num'
+          nodes = selectNodes(numerator)
+          foci = selectNodes( cl(row, col, 0))[0]
+          linkToFoci(forces[row].links(), nodes, foci)
+
+          numerator = cl(row, col) + '.denom'
+          nodes = selectNodes(numerator)
+          foci = selectNodes( cl(row, col, 1))[0]
+          linkToFoci(forces[row].links(), nodes, foci)
+        }
+      }
+      return dur
+    }
     // back to the original configuration
     , function(){
       var dur = tempo
       _.each(rows, function(row_val, row){
         _.each(cols, function(col_val, col){
-          animFoci( cl(row, col) + '.foci-0', { x : w / (cols.length + 2) * (1 + col) - 30 }, dur)
-          animFoci( cl(row, col) + '.foci-1', { x : w / (cols.length + 2) * (1 + col) + 30 }, dur)
+          animFoci( cl(row, col) + '.foci-0', { x : x('combined') - 200 }, dur)
+          animFoci( cl(row, col) + '.foci-1', { x : x('combined') + 50 }, dur)
         })
       })
       return dur
@@ -329,8 +387,8 @@ var cl = function(row, col, fociId){
       var dur = tempo
       _.each(rows, function(row_val, row){
         _.each(cols, function(col_val, col){
-          animFoci( cl(row, col) + '.foci-0', { x : w / (cols.length + 2) * (col + 1) }, dur)
-          animFoci( cl(row, col) + '.foci-1', { x : w / (cols.length + 2) * (col + 1) }, dur)
+          animFoci( cl(row, col) + '.foci-0', { x : x(cols[col]) }, dur)
+          animFoci( cl(row, col) + '.foci-1', { x : x(cols[col]) }, dur)
         })
       })
       return dur
@@ -340,17 +398,20 @@ var cl = function(row, col, fociId){
   , t = -1
   , forward = 1
   , back_and_forth = false // change to play the animation `back-and-forth`
+  , is_playing = true
   , loop = function(){
-    if(back_and_forth){
-      if(t >= timeline.length - 1) forward = -1
-      else if (t <= 0) forward = 1
-    }
-    var now = timeline[t = (t + forward) % timeline.length]
-    if(typeof now === 'function'){
-      var dur = now()
-      if(dur === undefined) dur = tempo
-      setTimeout(loop, dur)
-    }else setTimeout(loop, now)
+    if(is_playing){
+      if(back_and_forth){
+        if(t >= timeline.length - 1) forward = -1
+        else if (t <= 0) forward = 1
+      }
+      var now = timeline[t = (t + forward) % timeline.length]
+      if(typeof now === 'function'){
+        var dur = now()
+        if(dur === undefined) dur = tempo
+        setTimeout(loop, dur)
+      }else setTimeout(loop, now)
+    }else setTimeout(loop, 100)
   }
 
 loop()
@@ -390,7 +451,7 @@ var yAxis = d3.svg.axis()
     .orient("right"); 
 
 var gXAxis = svg.append("g")
-    .attr("transform","translate(" + margin.left + "," + 0 + ")" )
+    .attr("transform","translate(" + margin.left + "," + margin.top + ")" )
     .attr("class", "x-axis-force")
     .call(xAxis)
 
@@ -402,7 +463,13 @@ svg.append('text')
   .text('1 ball = 10 applicants ')
   .attr({
     x : 10
-    , y : h - 10
+    , y : h + margin.top
     , class : 'legend-item1'
   })
 
+var playButton = document.getElementsByClassName('play-button')[0]
+playButton.onclick = function(e){
+  e.preventDefault()
+  is_playing = !is_playing
+  playButton.innerText = is_playing ? 'stop' : 'play'
+}

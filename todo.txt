@@ -1,6 +1,10 @@
 todo:
 
-add tooltip that displays gender division per department, overall acceptance rate for that department, and percent of gender who applied to that department.
-add very light banding to departments
-add label to the top axis that says "departments."
-add play buttons
+victor:
+  fix node bug
+  add play buttons
+
+lewis:
+  add tooltip that displays gender division per department, overall acceptance rate for that department, and percent of gender who applied to that department.
+  add label to the top axis that says "departments."
+  add very light banding to departments
