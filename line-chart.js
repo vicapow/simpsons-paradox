@@ -43,6 +43,7 @@ var line = d3.svg.line()
 var svg = d3.select("#line-chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
+    .attr("class","svg-line")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -135,14 +136,4 @@ svg.append("g")
 		stroke: '#2C3E50'
 	});
 
-d3.selectAll("circle")
-	.on("mouseover", function(){
-		d3.select(this).transition().duration(25)
-			.attr("stroke", "white")
-			.attr("stroke-width","2px")
-	})
-	.on("mouseout", function(){
-		d3.select(this).transition().duration(25)
-			.attr("stroke", "#2C3E50")
-			.attr("stroke-width","1px")
-	})	
+

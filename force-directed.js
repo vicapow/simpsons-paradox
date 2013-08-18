@@ -1,7 +1,7 @@
 var blue = '#3498DB',
  red = '#E74C3C',
  black = '#2C3E50'
-var margin = {top: 20, right: 10, bottom: 40, left: 40}
+var margin = {top: 30, right: 10, bottom: 40, left: 40}
 
 var w = window.innerWidth*.6
   , h = 350
@@ -67,17 +67,58 @@ var w = window.innerWidth*.6
   , max_nodes_per_ratio = d3.max(_.map(data, function(row){
     return d3.max( _.map(row, function(col){ return _.last(col) } ) )
   }))
-  , fill = function(d){
+  , colorScale = function(d){
     if(d) return red
     else return blue
   }
   , svg = d3.select('.vis svg')
       .attr('width', w  + margin.left + margin.right)
       .attr('height', h + margin.top + margin.bottom)
+      .attr("class","force-directed")
+
+  , gXAxis = svg.append("g")
+      .attr("class", "x-axis-force")
+  , gYAxis = svg.append("g")
+      .attr("class", "y-axis-force")
   , main = svg.append("g")
     .attr("class", "main")
     .attr("transform","translate(" + margin.left + "," + margin.top + ")")
-  , createForce = function(){
+
+  //axes and bands
+  var x = d3.scale.ordinal()
+      .domain(cols.concat('combined'))
+      .rangeBands([0, w ], .5)
+
+  var yScale = d3.scale.ordinal()
+      .domain(rows)
+      .rangeBands([0, h ], .5)
+
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .tickPadding(10)
+      .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+      .scale(yScale)
+      .orient("right"); 
+
+  gXAxis.call(xAxis);
+  gYAxis.call(yAxis);
+
+  gXAxis.selectAll(".tick.major")
+    .append("rect")
+    .attr({
+        class: "band",
+        width: 2*x.rangeBand(),
+        height: h- margin.bottom,
+        fill: function(d, i){
+          return (i%2===1) ? "#bdc3c7": "none";
+        },
+        transform: "translate(" + -x.rangeBand() + "," + margin.top + ")",
+        opacity: .4
+    });
+
+  var createForce = function(){
     return d3.layout.force()
       .nodes([])
       .links([])
@@ -103,7 +144,7 @@ var w = window.innerWidth*.6
       links.push({ source : node, target : foci })
     })
   }
-  , createNodes = function(num, denom, name){
+  , createNodes = function(num, denom, name, col, row){
     return d3.range(denom).map(function(d){
       return {
         id : d < num ? 0 : 1
@@ -111,6 +152,8 @@ var w = window.innerWidth*.6
         , y : Math.random() * h
         , charge : -1 * 10000 / max_nodes_per_ratio
         , name : name + ((d < num) ? ' num' : ' denom')
+        , department: col
+        , sex: row
       }
     })
   }
@@ -124,28 +167,24 @@ var w = window.innerWidth*.6
   , colClass = function(col){
     return 'col-' + col.replace(/ /g, '').toLowerCase()
   }
-  , x = d3.scale.ordinal()
-    .domain(cols.concat('combined'))
-    .rangeRoundBands([margin.left, w + margin.left + margin.right], .1)
 
-  , y = d3.scale.ordinal()
-    .domain(rows)
-    .rangeRoundBands([margin.top, h + margin.bottom + margin.top], .1)
 
 // create all the focal points for the different nodes
 _.each(rows, function(row_val, row){
   _.each(cols, function(col_val, col){
     var row_class = rowClass(rows[row])
       , col_class = colClass(cols[col])
-      , x = (w + margin.left + margin.right) / (cols.length + 2) * (col + 1)
-      , y = (h + margin.top + margin.bottom) / (rows.length + 1) * ( row + 1)
-      , foci1 = createFoci( x,  y, row_class + ' ' + col_class + ' foci foci-0')
-      , foci2 = createFoci( x,  y, row_class + ' ' + col_class + ' foci foci-1')
+      , mx = x(col_val)
+      , my = yScale(row_val) 
+      , foci1 = createFoci( mx,  my, row_class + ' ' + col_class + ' foci foci-0')
+      , foci2 = createFoci( mx,  my, row_class + ' ' + col_class + ' foci foci-1')
     if(!focis[rows[row]]) focis[rows[row]] = {}
     focis[rows[row]][cols[col]] = [foci1, foci2]
     forces[row].nodes().push(foci1, foci2)
   })
 })
+
+
 
 function setupNodeAndLinks(force, row){
   cols.forEach(function(col){
@@ -154,7 +193,7 @@ function setupNodeAndLinks(force, row){
       , den = data[row][col][1]
       , row_class = rowClass(row)
       , col_class = colClass(col)
-      , nodes = createNodes(num, den, row_class + ' ' + col_class)
+      , nodes = createNodes(num, den, row_class + ' ' + col_class, col, row)
     force.nodes().push.apply(force.nodes(), nodes)
     linkToFoci(force.links(), nodes.filter(function(d){
       return d.id === 0
@@ -176,7 +215,6 @@ _.each(forces, function(force, i){
 })
 
 
-
 main.selectAll('circle' + '.node')
   .data(_.reduce(forces
     , function(nodes, force) { return nodes.concat(force.nodes()); }, []))
@@ -185,7 +223,7 @@ main.selectAll('circle' + '.node')
     .attr('cx', function(d) { return d.x })
     .attr('cy', function(d) { return d.y })
     .attr('r', 3 + 100 / num_nodes )
-    .style('fill', function(d) { return fill(d.id) })
+    .style('fill', function(d) { return colorScale(d.id) })
     .style('stroke', 'white')
     .style('stroke-width', 1)
 
@@ -305,8 +343,8 @@ var cl = function(row, col, fociId){
       var dur = tempo * 2
       for(var row in rows){
         for(var col in cols){
-          animFoci( cl(row, col) + '.foci-0', { x : w / (cols.length + 2) * (cols.length + 1) }, dur)
-          animFoci( cl(row, col) + '.foci-1', { x : w / (cols.length + 2) * (cols.length + 1) }, dur)
+          animFoci( cl(row, col) + '.foci-0', { x : x('combined')  }, dur)
+          animFoci( cl(row, col) + '.foci-1', { x : x('combined')  }, dur)
         }
       }
       return dur
@@ -378,7 +416,7 @@ var cl = function(row, col, fociId){
       _.each(rows, function(row_val, row){
         _.each(cols, function(col_val, col){
           animFoci( cl(row, col) + '.foci-0', { x : x('combined') - 200 }, dur)
-          animFoci( cl(row, col) + '.foci-1', { x : x('combined') + 20 }, dur)
+          animFoci( cl(row, col) + '.foci-1', { x : x('combined') }, dur)
         })
       })
       return dur
@@ -387,8 +425,8 @@ var cl = function(row, col, fociId){
       var dur = tempo
       _.each(rows, function(row_val, row){
         _.each(cols, function(col_val, col){
-          animFoci( cl(row, col) + '.foci-0', { x : x(cols[col]) }, dur)
-          animFoci( cl(row, col) + '.foci-1', { x : x(cols[col]) }, dur)
+          animFoci( cl(row, col) + '.foci-0', { x : x(col_val) }, dur)
+          animFoci( cl(row, col) + '.foci-1', { x : x(col_val) }, dur)
         })
       })
       return dur
@@ -437,27 +475,14 @@ function animFoci(foci, pos, duration){
   })
 }
 
+// debugger;
+
+
 // Labels
 
 // todo: change root `em` size depending on window size
 // d3.select('body').style('font-size', '1em')
 
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("right"); 
-
-var gXAxis = svg.append("g")
-    .attr("transform","translate(" + margin.left + "," + margin.top + ")" )
-    .attr("class", "x-axis-force")
-    .call(xAxis)
-
-var gYAxis = svg.append("g")
-    .attr("class", "y-axis-force")
-    .call(yAxis)
 
 svg.append('text')
   .text('1 ball = 10 applicants ')
@@ -473,3 +498,4 @@ playButton.onclick = function(e){
   is_playing = !is_playing
   playButton.innerText = is_playing ? 'stop' : 'play'
 }
+

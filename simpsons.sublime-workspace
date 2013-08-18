@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"trans",
+				"translate"
+			],
+			[
+				"ta",
+				"transform"
+			],
+			[
+				"red",
+				"redData"
+			],
+			[
 				"tex",
 				"text-align"
 			],
@@ -48,10 +60,10 @@
 	"buffers":
 	[
 		{
-			"file": "index.html",
+			"contents": "",
 			"settings":
 			{
-				"buffer_size": 14739,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -59,40 +71,23 @@
 			"file": "todo.txt",
 			"settings":
 			{
-				"buffer_size": 417,
-				"line_ending": "Unix",
-				"name": "todo:"
-			}
-		},
-		{
-			"file": "bootstrap/css/bootstrap.css",
-			"settings":
-			{
-				"buffer_size": 82031,
+				"buffer_size": 270,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "simp-style.css",
+			"file": "/home/lewis/Documents/github/vudlab-website/views/learn.html",
 			"settings":
 			{
-				"buffer_size": 454,
+				"buffer_size": 10257,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/lewis/Documents/github/juju/jumbotron/index.html",
+			"file": "/home/lewis/Documents/github/vudlab-website/views/workouts.html",
 			"settings":
 			{
-				"buffer_size": 4210,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/lewis/Documents/github/juju/jumbotron/jumbotron.css",
-			"settings":
-			{
-				"buffer_size": 729,
+				"buffer_size": 10257,
 				"line_ending": "Unix"
 			}
 		}
@@ -100,9 +95,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 180.0,
 		"selected_items":
 		[
+			[
+				"bow",
+				"Preferences: Browse Packages"
+			],
 			[
 				"emmet",
 				"Emmet: Match Pair (outward)"
@@ -148,7 +147,7 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 575.0
+		"width": 467.0
 	},
 	"console":
 	{
@@ -168,7 +167,18 @@
 	},
 	"file_history":
 	[
+		"/home/lewis/Documents/github/simpsons-paradox/donut-chart.js",
+		"/home/lewis/Documents/github/simpsons-paradox/line-chart.js",
+		"/home/lewis/Documents/github/simpsons-paradox/todo.txt",
+		"/home/lewis/Documents/github/simpsons-paradox/index.html",
+		"/home/lewis/Documents/github/simpsons-paradox/force-directed.js",
+		"/home/lewis/Documents/github/simpsons-paradox/simp-style.css",
+		"/home/lewis/Documents/github/simpsons-paradox/Flat-UI-master/index2.html",
+		"/home/lewis/Documents/github/Diagnostics/view1.js",
+		"/home/lewis/Documents/github/Diagnostics/common.js",
+		"/home/lewis/Documents/github/simpsons-paradox/bootstrap/css/bootstrap.css",
 		"/home/lewis/Documents/github/juju/jumbotron/jumbotron.css",
+		"/home/lewis/Documents/github/juju/jumbotron/index.html",
 		"/home/lewis/Documents/github/juju/starter-template/index.html",
 		"/home/lewis/Documents/github/juju/bootstrap/css/juju.css",
 		"/home/lewis/Documents/github/juju/bootstrap/css/bootstrap.css",
@@ -179,9 +189,7 @@
 		"/home/lewis/Dropbox/story1.txt",
 		"/home/lewis/Documents/github/dash/app/index.html",
 		"/home/lewis/Documents/github/dash/app/scripts/controllers/main.js",
-		"/home/lewis/Documents/github/Diagnostics/common.js",
 		"/home/lewis/Documents/github/dash/app/scripts/services/services.js",
-		"/home/lewis/Documents/github/Diagnostics/view1.js",
 		"/home/lewis/Documents/github/Diagnostics/common2.js",
 		"/home/lewis/Documents/github/Diagnostics/interface.html",
 		"/home/lewis/Documents/github/dash/app/views/main.html",
@@ -233,6 +241,29 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"cols",
+			"black",
+			"0",
+			"yaxis",
+			"xaxis",
+			"width",
+			"xaxis",
+			"text",
+			"svg",
+			"svg.append",
+			"500",
+			"img",
+			"women",
+			"circle",
+			"custom",
+			".js",
+			"title",
+			"line-chart",
+			"scale",
+			"yax",
+			"selectall",
+			"red",
+			"dfun",
 			"actually",
 			"height",
 			"Dept ",
@@ -275,103 +306,15 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14739,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1353,
-								1353
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true,
-							"word_separators": "./\\\\()\\\"\\'-:,.;<>~!@#%^&*|+=[]{}`~?"
-						},
-						"translation.x": 0.0,
-						"translation.y": 270.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "todo.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 417,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								417,
-								417
-							]
-						],
-						"settings":
-						{
-							"auto_name": "todo:",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "bootstrap/css/bootstrap.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 82031,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3720,
-								3720
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 5024.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "simp-style.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 454,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -384,9 +327,8 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -395,60 +337,83 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "/home/lewis/Documents/github/juju/jumbotron/index.html",
+					"buffer": 1,
+					"file": "todo.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4210,
+						"buffer_size": 270,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2098,
-								2098
+								269,
+								269
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/lewis/Documents/github/vudlab-website/views/learn.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10257,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10257,
+								10257
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/lewis/Documents/github/vudlab-website/views/workouts.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10257,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10257,
+								10257
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1002.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/home/lewis/Documents/github/juju/jumbotron/jumbotron.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 729,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								310,
-								310
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1445.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -458,7 +423,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -490,7 +455,7 @@
 	"project": "simpsons.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -498,6 +463,14 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"index",
+				"simpsons-paradox/index.html"
+			],
+			[
+				"line-",
+				"simpsons-paradox/line-chart.js"
+			]
 		],
 		"width": 0.0
 	},
@@ -524,7 +497,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 202.0,
+	"side_bar_width": 216.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
