@@ -178,6 +178,8 @@ var w = window.innerWidth * .6
   , colClass = function(col){
     return 'col-' + col.replace(/ /g, '').toLowerCase()
   }
+  // make the radius of each node smaller as the number of nodes increases
+  , node_radius = 3 + 100 / num_nodes
 
 
 // create all the focal points for the different nodes
@@ -233,7 +235,7 @@ main.selectAll('circle' + '.node')
     .attr('class', function(d){ return 'node ' + d.name})
     .attr('cx', function(d) { return d.x })
     .attr('cy', function(d) { return d.y })
-    .attr('r', 3 + 100 / num_nodes )
+    .attr('r', node_radius )
     .style('fill', function(d) { return colorScale(d.id) })
     .style('stroke', 'white')
     .style('stroke-width', 1)
@@ -489,12 +491,24 @@ function animFoci(foci, pos, duration){
 // Labels
 
 svg.append('text')
-  .text('1 ball = 10 applicants ')
+  .text('    = 10 applicants ')
   .attr({
     x : 10
     , y : h + margin.top
     , class : 'legend-item1'
   })
+
+svg.append('circle')
+  .attr('class','node')
+  .attr({
+    'class': 'node',  
+    r: node_radius
+  })
+  .attr('cx', 4)
+  .attr('cy', h + margin.top - 4)
+  .style('fill', function(d) { return colorScale(1) })
+  .style('stroke', 'white')
+  .style('stroke-width', 1)
 
 var playButton = document.getElementsByClassName('play-button')[0]
 playButton.onclick = function(e){
