@@ -3,7 +3,7 @@ var blue = '#3498DB',
  black = '#2C3E50'
 var margin = {top: 30, right: 10, bottom: 40, left: 40}
 
-var w = window.innerWidth*.6
+var w = window.innerWidth * .6
   , h = 350
   , tempo = 500
   , data = {
@@ -24,6 +24,7 @@ var w = window.innerWidth*.6
       , 'F' : [2, 27]
     }
   }
+  , row_totals = {}
   // return the combined ration for a row in the data
   , combined = function(row){
     return _.reduce(_.toArray(data)[row], function(m, n){
@@ -83,40 +84,45 @@ var w = window.innerWidth*.6
   , main = svg.append("g")
     .attr("class", "main")
     .attr("transform","translate(" + margin.left + "," + margin.top + ")")
-
   //axes and bands
-  var x = d3.scale.ordinal()
+  , x = d3.scale.ordinal()
       .domain(cols.concat('combined'))
       .rangeBands([0, w ], .5)
 
-  var yScale = d3.scale.ordinal()
+  , yScale = d3.scale.ordinal()
       .domain(rows)
       .rangeBands([0, h ], .5)
 
-  var xAxis = d3.svg.axis()
+  , xAxis = d3.svg.axis()
       .scale(x)
       .tickPadding(10)
-      .orient("bottom");
+      .orient("bottom")
 
-  var yAxis = d3.svg.axis()
+  , yAxis = d3.svg.axis()
       .scale(yScale)
-      .orient("right"); 
+      .orient("right")
 
-  gXAxis.call(xAxis);
-  gYAxis.call(yAxis);
+  _.map(data, function(row, name){
+    row_totals[name] = _.reduce(row, function(memo, col){
+      return col[col.length - 1] + memo
+    }, 0)
+  })
+
+  gXAxis.call(xAxis)
+  gYAxis.call(yAxis)
 
   gXAxis.selectAll(".tick.major")
     .append("rect")
     .attr({
-        class: "band",
-        width: 2*x.rangeBand(),
-        height: h- margin.bottom,
-        fill: function(d, i){
-          return (i%2===1) ? "#bdc3c7": "none";
-        },
-        transform: "translate(" + -x.rangeBand() + "," + margin.top + ")",
-        opacity: .4
-    });
+        "class": "band"
+        , width: 2*x.rangeBand()
+        , height: h- margin.bottom
+        , fill: function(d, i){
+          return ( i % 2 === 1 ) ? "#bdc3c7": "none"
+        }
+        , transform: "translate(" + -x.rangeBand() + "," + margin.top + ")"
+        , opacity: 0.4
+    })
 
   var createForce = function(){
     return d3.layout.force()
@@ -154,6 +160,11 @@ var w = window.innerWidth*.6
         , name : name + ((d < num) ? ' num' : ' denom')
         , department: col
         , sex: row
+        // ratio of those accepted vs applied
+        , accepted: num / denom
+        // ratio of those applied to the department vs total applied to 
+        // the university
+        , applied: denom / row_totals[row]
       }
     })
   }
@@ -217,7 +228,7 @@ _.each(forces, function(force, i){
 
 main.selectAll('circle' + '.node')
   .data(_.reduce(forces
-    , function(nodes, force) { return nodes.concat(force.nodes()); }, []))
+    , function(nodes, force) { return nodes.concat(force.nodes()) }, []))
   .enter().append('circle')
     .attr('class', function(d){ return 'node ' + d.name})
     .attr('cx', function(d) { return d.x })
@@ -475,14 +486,7 @@ function animFoci(foci, pos, duration){
   })
 }
 
-// debugger;
-
-
 // Labels
-
-// todo: change root `em` size depending on window size
-// d3.select('body').style('font-size', '1em')
-
 
 svg.append('text')
   .text('1 ball = 10 applicants ')
