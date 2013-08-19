@@ -3,10 +3,11 @@ todo:
 victor:
   fix node bug
   add play buttons
+  put the acceptance rate on the left?
+	enter data on acceptance rates for each department and add to tooltip
 
 lewis:
   add tooltip that displays gender division per department, overall acceptance rate for that department, and percent of gender who applied to that department.
   add label to the top axis that says "departments."
-  add very light banding to departments
-
-enter data on acceptance rates for each department and add to tooltip
+	make the bandign stronger
+	add x to the axis label

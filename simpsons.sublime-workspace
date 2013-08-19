@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"acc",
+				"accOrRej"
+			],
+			[
 				"trans",
 				"translate"
 			],
@@ -60,10 +64,18 @@
 	"buffers":
 	[
 		{
-			"contents": "",
+			"file": "tooltip.js",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 3241,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "force-directed.js",
+			"settings":
+			{
+				"buffer_size": 14275,
 				"line_ending": "Unix"
 			}
 		},
@@ -71,23 +83,7 @@
 			"file": "todo.txt",
 			"settings":
 			{
-				"buffer_size": 270,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/lewis/Documents/github/vudlab-website/views/learn.html",
-			"settings":
-			{
-				"buffer_size": 10257,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/lewis/Documents/github/vudlab-website/views/workouts.html",
-			"settings":
-			{
-				"buffer_size": 10257,
+				"buffer_size": 379,
 				"line_ending": "Unix"
 			}
 		}
@@ -95,9 +91,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 180.0,
+		"height": 201.0,
 		"selected_items":
 		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				"bow",
 				"Preferences: Browse Packages"
@@ -109,10 +109,6 @@
 			[
 				"enable",
 				"Package Control: Enable Package"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"bro",
@@ -167,12 +163,14 @@
 	},
 	"file_history":
 	[
-		"/home/lewis/Documents/github/simpsons-paradox/donut-chart.js",
 		"/home/lewis/Documents/github/simpsons-paradox/line-chart.js",
-		"/home/lewis/Documents/github/simpsons-paradox/todo.txt",
-		"/home/lewis/Documents/github/simpsons-paradox/index.html",
+		"/home/lewis/Documents/github/simpsons-paradox/donut-chart.js",
 		"/home/lewis/Documents/github/simpsons-paradox/force-directed.js",
 		"/home/lewis/Documents/github/simpsons-paradox/simp-style.css",
+		"/home/lewis/Documents/github/simpsons-paradox/index.html",
+		"/home/lewis/Documents/github/simpsons-paradox/todo.txt",
+		"/home/lewis/Documents/github/vudlab-website/views/learn.html",
+		"/home/lewis/Documents/github/vudlab-website/views/workouts.html",
 		"/home/lewis/Documents/github/simpsons-paradox/Flat-UI-master/index2.html",
 		"/home/lewis/Documents/github/Diagnostics/view1.js",
 		"/home/lewis/Documents/github/Diagnostics/common.js",
@@ -241,6 +239,56 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"yaxis",
+			"yscale",
+			"women",
+			"Women",
+			"rangeband",
+			"y.",
+			"y(",
+			"cy",
+			"y(",
+			"createfoci",
+			"y :",
+			"w ",
+			"cols.length",
+			"animfoci",
+			"x :",
+			"x:",
+			"x: ",
+			"w =",
+			"x =",
+			"x(",
+			"createfoci",
+			"animfoci",
+			"x :",
+			"x = ",
+			"x =",
+			"'circle'",
+			"translate",
+			"main",
+			"createfoci",
+			"foci",
+			"x:",
+			"cols =",
+			"y =",
+			"x =",
+			"y =",
+			"range",
+			"height",
+			"createnode",
+			"createnodes",
+			"sexdepartment",
+			"sex",
+			"rowclass",
+			"color",
+			".on",
+			"svg",
+			"name",
+			"fill",
+			"name",
+			".data",
+			".js",
 			"cols",
 			"black",
 			"0",
@@ -306,29 +354,30 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "tooltip.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 3241,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								264,
+								264
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"word_separators": "./\\\\()\\\"\\'-:,.;<>~!@#%^&*|+=[]{}`~?"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -338,19 +387,49 @@
 				},
 				{
 					"buffer": 1,
-					"file": "todo.txt",
+					"file": "force-directed.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 270,
+						"buffer_size": 14275,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								269,
-								269
+								3125,
+								3125
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"word_separators": "./\\\\()\\\"\\'-:,.;<>~!@#%^&*|+=[]{}`~?"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1520.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "todo.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 379,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								48,
+								48
 							]
 						],
 						"settings":
@@ -362,58 +441,39 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
 				{
-					"buffer": 2,
-					"file": "/home/lewis/Documents/github/vudlab-website/views/learn.html",
+					"buffer": 1,
+					"file": "force-directed.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10257,
+						"buffer_size": 14275,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10257,
-								10257
+								13294,
+								13294
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"word_separators": "./\\\\()\\\"\\'-:,.;<>~!@#%^&*|+=[]{}`~?"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/home/lewis/Documents/github/vudlab-website/views/workouts.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10257,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10257,
-								10257
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1445.0,
+						"translation.y": 6463.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -438,11 +498,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.659451706904,
 			1.0
 		],
 		"rows":
@@ -463,6 +530,38 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"force-d",
+				"simpsons-paradox/force-directed.js"
+			],
+			[
+				"todo",
+				"simpsons-paradox/todo.txt"
+			],
+			[
+				"force-dir",
+				"simpsons-paradox/force-directed.js"
+			],
+			[
+				"force",
+				"simpsons-paradox/force-directed.js"
+			],
+			[
+				"chart",
+				"simpsons-paradox/donut-chart.js"
+			],
+			[
+				"li",
+				"simpsons-paradox/line-chart.js"
+			],
+			[
+				"line-ch",
+				"simpsons-paradox/line-chart.js"
+			],
+			[
+				"simp",
+				"simpsons-paradox/simp-style.css"
+			],
 			[
 				"index",
 				"simpsons-paradox/index.html"
@@ -497,7 +596,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 216.0,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
