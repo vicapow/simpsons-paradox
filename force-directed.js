@@ -496,17 +496,17 @@ svg.append('text')
     x : 10
     , y : h + margin.top
     , class : 'legend-item1'
-  })
+  });
 
 svg.append('circle')
   .attr('class','node')
   .attr({
-    'class': 'node',  
+    'class': 'node',
     r: node_radius
   })
   .attr('cx', 4)
   .attr('cy', h + margin.top - 4)
-  .style('fill', function(d) { return colorScale(1) })
+  .style('fill', "grey")
   .style('stroke', 'white')
   .style('stroke-width', 1)
 
@@ -515,5 +515,5 @@ playButton.onclick = function(e){
   e.preventDefault()
   is_playing = !is_playing
   playButton.innerText = is_playing ? 'stop' : 'play'
-}
+};
 

@@ -72,10 +72,26 @@
 			}
 		},
 		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 5450,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "other material.html",
+			"settings":
+			{
+				"buffer_size": 1310,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "force-directed.js",
 			"settings":
 			{
-				"buffer_size": 14275,
+				"buffer_size": 14880,
 				"line_ending": "Unix"
 			}
 		},
@@ -83,7 +99,7 @@
 			"file": "todo.txt",
 			"settings":
 			{
-				"buffer_size": 379,
+				"buffer_size": 199,
 				"line_ending": "Unix"
 			}
 		}
@@ -163,12 +179,12 @@
 	},
 	"file_history":
 	[
+		"/home/lewis/Documents/github/simpsons-paradox/todo.txt",
+		"/home/lewis/Documents/github/simpsons-paradox/force-directed.js",
 		"/home/lewis/Documents/github/simpsons-paradox/line-chart.js",
 		"/home/lewis/Documents/github/simpsons-paradox/donut-chart.js",
-		"/home/lewis/Documents/github/simpsons-paradox/force-directed.js",
 		"/home/lewis/Documents/github/simpsons-paradox/simp-style.css",
 		"/home/lewis/Documents/github/simpsons-paradox/index.html",
-		"/home/lewis/Documents/github/simpsons-paradox/todo.txt",
 		"/home/lewis/Documents/github/vudlab-website/views/learn.html",
 		"/home/lewis/Documents/github/vudlab-website/views/workouts.html",
 		"/home/lewis/Documents/github/simpsons-paradox/Flat-UI-master/index2.html",
@@ -239,6 +255,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"is",
+			"would",
+			"coverage",
+			"it",
+			"label",
+			"matters",
+			"name",
 			"yaxis",
 			"yscale",
 			"women",
@@ -387,19 +410,75 @@
 				},
 				{
 					"buffer": 1,
-					"file": "force-directed.js",
+					"file": "index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14275,
+						"buffer_size": 5450,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3125,
-								3125
+								3844,
+								3844
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 493.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "other material.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1310,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1308,
+								1308
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "force-directed.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14880,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14228,
+								14228
 							]
 						],
 						"settings":
@@ -410,26 +489,26 @@
 							"word_separators": "./\\\\()\\\"\\'-:,.;<>~!@#%^&*|+=[]{}`~?"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1520.0,
+						"translation.y": 8133.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 4,
 					"file": "todo.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 379,
+						"buffer_size": 199,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								48,
-								48
+								199,
+								199
 							]
 						],
 						"settings":
@@ -449,12 +528,12 @@
 			"sheets":
 			[
 				{
-					"buffer": 1,
+					"buffer": 3,
 					"file": "force-directed.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14275,
+						"buffer_size": 14880,
 						"regions":
 						{
 						},
@@ -531,12 +610,20 @@
 		"selected_items":
 		[
 			[
-				"force-d",
+				"todo",
+				"simpsons-paradox/todo.txt"
+			],
+			[
+				"force-",
 				"simpsons-paradox/force-directed.js"
 			],
 			[
-				"todo",
-				"simpsons-paradox/todo.txt"
+				"inde",
+				"simpsons-paradox/index.html"
+			],
+			[
+				"force-d",
+				"simpsons-paradox/force-directed.js"
 			],
 			[
 				"force-dir",
@@ -596,7 +683,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 50.0,
+	"side_bar_width": 227.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
