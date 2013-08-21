@@ -11,7 +11,7 @@
     <!-- <link rel="shortcut icon" href="Flat-UI-master/images/favicon.ico"> -->
     <link rel="stylesheet" href="simp-style.css">
   </head>
-  <body>
+  <body ng-app="mainApp">
     <div class="container col-lg-8 col-offset-2">
         <div class="jumbotron">
               <h1>Simpson's Paradox</h1>
@@ -29,9 +29,6 @@
         </div>
         <div class="col-lg-5">
           <div id = 'line-chart'></div>
-
-
-
         </div>
       </div>
 
@@ -67,16 +64,30 @@
           <h4>Why it matters</h4>
           <p>Simpson's Paradox usually fools us where performance and demographics mingle. For example, <a href="http://iowahawk.typepad.com/iowahawk/2011/03/longhorns-17-badgers-1.html">on elementary school tests</a>, minority students in Texas outperform their peers in Wisconsin, but Texas has so many minority students that Wisconsin dominates it in state rankings. Ignoring demographics might lead Texas schools to waste money copying Wisconsin.</p>
         </div>
-
-        
       </div>
-
-
+      <div class="row" ng-controller="MainCtrl">
+        <!-- <input type="text" value="" placeholder="Inactive" class="span3" ng-model="proportions" gender="male" ng-submit/> -->
+        <div donut gender="male" class="col-lg-3"></div>  
+        <div donut gender="female" class="col-lg-3"></div>  
+      </div>
+      <div class="row">
+        <div line-chart></div>
+      </div>
     </div><!-- /.container -->  
     <div class="tooltip" style="opacity:0;"></div>
+
+  </body>
+    <!-- libraries: js -->
+    <script src="lib/angular.min.js"></script>
+
+    <!-- non-angular scripts -->
     <script src="line-chart.js"></script>
     <script src="donut-chart.js"></script>
-   <script src="force-directed.js"></script>
-   <script src="tooltip.js"></script>
-  </body>
+    <script src="force-directed.js"></script>
+    <script src="tooltip.js"></script>
+
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/donutDirect.js"></script>
+    <script src="scripts/lineDirect.js"></script>
 </html>
