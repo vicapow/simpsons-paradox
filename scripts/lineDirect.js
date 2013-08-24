@@ -8,140 +8,166 @@ app.directive('lineChart', function(){
 	  black = '#2C3E50',
 		red = '#E74C3C';
 
-		var blueData = [
-			{x: 1, y: 6, col: blue},
-			{x: 2, y: 7, col: blue},
-			{x: 3, y: 8, col: blue},
-			{x: 4, y: 9, col: blue},
-		];
+	var x = d3.scale.linear()
+			.domain([0,100])
+	    .range([0, width]);
 
-		var redData = [
-			{x: 8, y: 1, col: red},
-			{x: 9, y: 2, col: red},
-			{x: 10, y: 3, col: red},
-			{x: 11, y: 4, col: red}
-		]
+	var y = d3.scale.linear()
+			.domain([0,100])
+	    .range([height, 0]);
 
-		var x = d3.scale.linear()
-				.domain([0,12])
-		    .range([0, width]);
+	var xAxis = d3.svg.axis()
+	    .scale(x)
+	    .orient("bottom");
 
-		var y = d3.scale.linear()
-				.domain([0,10])
-		    .range([height, 0]);
+	var yAxis = d3.svg.axis()
+	    .scale(y)
+	    .orient("left");
 
-		var xAxis = d3.svg.axis()
-		    .scale(x)
-		    .orient("bottom");
-
-		var yAxis = d3.svg.axis()
-		    .scale(y)
-		    .orient("left");
-
-		var line = d3.svg.line()
-		    .x(function(d) { return x(d.x); })
-		    .y(function(d) { return y(d.y); });
+	var line = d3.svg.line()
+	    .x(function(d) { return x(d.pHard); })
+	    .y(function(d) { return y(d.admitted); });
 
 	// Runs during compile
 	return {
 		restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
 		link: function(scope, elem, attrs) {
-				d3.select(elem[0]).select("svg").remove();
- 
- 				var svg = d3.select(elem[0]).append("svg")
-				    .attr("width", width + margin.left + margin.right)
-				    .attr("height", height + margin.top + margin.bottom)
-				    .attr("class","svg-line")
-				  .append("g")
-				    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-				var gYAxis = svg.append("g")
-				    .attr("class", "y-axis")
-				    .call(yAxis)
+			var rates = scope.rates;
+			var proportions = scope.proportions;
 
-				gYAxis.append("text")
-				  .attr("transform", " translate(" + -28 + "," + height/2 + ") rotate(-90)")
-				  .style("text-anchor", "middle")
-				  .attr("font-size","18px")
-				  .text("y");
+			var femaleLineData = [
+			  {pHard: 0, admitted: rates.female.easy},
+			  {pHard: 100, admitted: rates.female.hard}
+			];
 
-				var gXAxis = svg.append("g")
-				    .attr("class", "x-axis")
-				    .attr("transform", "translate(0," + height + ")")
-				    .call(xAxis)
+			var maleLineData = [
+			  {pHard: 0, admitted: rates.male.easy},
+			  {pHard: 100, admitted: rates.male.hard}
+			];
 
-				gXAxis.append("text")
-				  .attr("transform", " translate(" + width/2 + "," + (height + 35) +  ")")
-				  .style("text-anchor", "middle")
-				  .attr("font-size","18px")
-				  .text("x");
+			d3.select(elem[0]).select("svg").remove();
 
-				svg.append("path")
-				    .datum([
-				    		{x: 7, y: 0},
-				    		{x: 13, y: 6}
-				    	])
-				    .attr("class", "line")
-				    .attr("d", line)
-				    .attr("stroke",red)
-				    .attr("stroke-width","1.5px")
+			var svg = d3.select(elem[0]).append("svg")
+		    .attr("width", width + margin.left + margin.right)
+		    .attr("height", height + margin.top + margin.bottom)
+		    .attr("class","svg-line")
+		  .append("g")
+		    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-				svg.append("path")
-				    .datum([
-				    		{x: 0, y: 8.2},
-				    		{x: 13, y: 1}
-				    	])
-				    .attr("class", "trend-line")
-				    .attr("d", line)
-				    .attr("stroke", '#999')
-				    .attr("stroke-width","1.5px")
-				    .attr("stroke-dasharray","4, 3");
+			var gYAxis = svg.append("g")
+			    .attr("class", "y-axis")
+			    .call(yAxis)
 
-				svg.append("path")
-				    .datum([
-				    		{x: 0, y: 5},
-				    		{x: 6, y: 11}
-				    	])    .attr("class", "line")
-				    .attr("d", line)
-				    .attr("stroke",blue)
-				    .attr("stroke-width","1.5px");
+			gYAxis.append("text")
+			  .attr("transform", " translate(" + -28 + "," + height/2 + ") rotate(-90)")
+			  .style("text-anchor", "middle")
+			  .attr("font-size","18px")
+			  .text("y");
 
-				svg.append("g")
-					.attr("class","g-blue-circles")
-					.selectAll("blue circles")
-					.data(blueData)
-					.enter()
-					.append("svg:circle")
+			var gXAxis = svg.append("g")
+			    .attr("class", "x-axis")
+			    .attr("transform", "translate(0," + height + ")")
+			    .call(xAxis)
+
+			gXAxis.append("text")
+			  .attr("transform", " translate(" + width/2 + "," + (height + 35) +  ")")
+			  .style("text-anchor", "middle")
+			  .attr("font-size","18px")
+			  .text("x");
+
+			svg.append("path")
+			    .datum(femaleLineData)
+			    .attr("class", "line")
+			    .attr("d", line)
+			    .attr("stroke",red)
+			    .attr("stroke-width","1.5px")
+
+			svg.append("path")
+			    .datum( maleLineData)
+			    .attr("class", "trend-line")
+			    .attr("d", line)
+			    .attr("stroke", '#999')
+			    .attr("stroke-width","1.5px")
+			    .attr("stroke-dasharray","4, 3");
+
+			svg.append("path")
+			    .datum(maleLineData)    
+			    .attr("class", "line")
+			    .attr("d", line)
+			    .attr("stroke",blue)
+			    .attr("stroke-width","1.5px");
+
+			svg.append("g")
+				.attr("class","g-blue-circles")
+				.selectAll("blue circles")
+				.data([proportions.male])
+				.enter()
+				.append("svg:circle")
+				.attr({
+					class: "blue-circles",
+					r: 6,
+					cx: function(d, i){
+						return x(d.pHard);
+					},
+					cy: function(d, i){
+						return y(d.admitted);
+					},
+					fill: blue,
+					stroke: '#2C3E50'
+				});
+
+			svg.append("g")
+				.attr("class","g-red-circles")
+				.selectAll("red circles")
+				.data([proportions.female])
+				.enter()
+				.append("svg:circle")
+				.attr({
+					class: "red-circles",
+					r: 6,
+					cx: function(d, i){
+						return x(d.pHard);
+					},
+					cy: function(d, i){
+						return y(d.admitted);
+					},
+					fill: red,
+					stroke: '#2C3E50'
+				}); //end attr
+
+			scope.$watch("proportions.male.admitted + proportions.female.admitted", function (val){
+				var proportions = scope.proportions;
+				var svg = d3.select(elem[0]);
+
+
+				svg.select(".blue-circles")
+					.data([proportions.male])
+					.transition().duration()
 					.attr({
-						class: "blue-cicles",
-						r: 6,
 						cx: function(d, i){
-							return x(d.x);
+							return x(d.pHard);
 						},
 						cy: function(d, i){
-							return y(d.y);
+							return y(d.admitted);
 						},
-						fill: blue,
-						stroke: '#2C3E50'
 					});
 
-				svg.append("g")
-					.attr("class","g-red-circles")
-					.selectAll("red circles")
-					.data(redData)
-					.enter()
-					.append("circle")
+				svg.select(".red-circles")
+					.data([proportions.female])
+					.transition().duration()
 					.attr({
-						r: 6,
 						cx: function(d, i){
-							return x(d.x);
+							return x(d.pHard);
 						},
 						cy: function(d, i){
-							return y(d.y);
+							return y(d.admitted);
 						},
-						fill: red,
-						stroke: '#2C3E50'
 					});
-		}
-	};
-});
+
+//make the circles bounce when updated???
+
+			}); //end $watch
+		}//end linking function
+	}; //end return
+}); //end directive

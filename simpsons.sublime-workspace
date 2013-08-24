@@ -63,53 +63,17 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "tooltip.js",
-			"settings":
-			{
-				"buffer_size": 3241,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 5450,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "other material.html",
-			"settings":
-			{
-				"buffer_size": 1310,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "force-directed.js",
-			"settings":
-			{
-				"buffer_size": 14880,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "todo.txt",
-			"settings":
-			{
-				"buffer_size": 199,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 201.0,
+		"height": 96.0,
 		"selected_items":
 		[
+			[
+				"angular",
+				"AngularJS: Rebuild Search Index"
+			],
 			[
 				"install",
 				"Package Control: Install Package"
@@ -179,12 +143,22 @@
 	},
 	"file_history":
 	[
+		"/home/lewis/Documents/github/simpsons-paradox/scripts/controllers/controller.js",
+		"/home/lewis/Documents/github/simpsons-paradox/scripts/lineDirect.js",
+		"/home/lewis/Documents/github/simpsons-paradox/scripts/donutDirect.js",
+		"/home/lewis/Documents/github/simpsons-paradox/scripts/slider.js",
+		"/home/lewis/Documents/github/simpsons-paradox/scripts/barDirect.js",
 		"/home/lewis/Documents/github/simpsons-paradox/todo.txt",
-		"/home/lewis/Documents/github/simpsons-paradox/force-directed.js",
+		"/home/lewis/Documents/github/simpsons-paradox/index.html",
+		"/home/lewis/Documents/github/simpsons-paradox/scripts/app.js",
+		"/home/lewis/Documents/github/simpsons-paradox/scripts/controllers/main.js",
 		"/home/lewis/Documents/github/simpsons-paradox/line-chart.js",
 		"/home/lewis/Documents/github/simpsons-paradox/donut-chart.js",
+		"/home/lewis/Documents/github/simpsons-paradox/d3.js",
+		"/home/lewis/Documents/github/simpsons-paradox/force-directed.js",
+		"/home/lewis/Documents/github/simpsons-paradox/tooltip.js",
+		"/home/lewis/Documents/github/simpsons-paradox/other material.html",
 		"/home/lewis/Documents/github/simpsons-paradox/simp-style.css",
-		"/home/lewis/Documents/github/simpsons-paradox/index.html",
 		"/home/lewis/Documents/github/vudlab-website/views/learn.html",
 		"/home/lewis/Documents/github/vudlab-website/views/workouts.html",
 		"/home/lewis/Documents/github/simpsons-paradox/Flat-UI-master/index2.html",
@@ -252,9 +226,70 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"200",
+			"group",
+			"rates",
+			"male",
+			"200",
+			"make",
+			"law",
+			"fdas",
+			"applied",
+			"asdf",
+			"Hard",
+			"Easy",
+			"Female",
+			"Males",
+			"Username",
+			"donutDirects",
+			"donutDirect",
+			"slider",
+			"ph",
+			"fh",
+			"mh",
+			"ph",
+			"$http",
+			"parsing",
+			"acceptance",
+			"femh",
+			"maleHard",
+			"pHard",
+			"male",
+			"female",
+			"hard",
+			"easy",
+			"hard",
+			"coursepH",
+			"course",
+			"phardpH",
+			"phard",
+			"coursepHar",
+			"course",
+			"male",
+			"line",
+			"26",
+			"addmitted",
+			"gMale",
+			"24",
+			"600",
+			"male",
+			"value",
+			"male",
+			"Data",
+			",\n",
+			"600",
+			"radius",
+			"height",
+			"change",
+			"donut",
+			"65",
+			"controller",
+			"iAttrs",
+			"iElm",
+			"bower_components",
 			"is",
 			"would",
 			"coverage",
@@ -321,44 +356,7 @@
 			"xaxis",
 			"text",
 			"svg",
-			"svg.append",
-			"500",
-			"img",
-			"women",
-			"circle",
-			"custom",
-			".js",
-			"title",
-			"line-chart",
-			"scale",
-			"yax",
-			"selectall",
-			"red",
-			"dfun",
-			"actually",
-			"height",
-			"Dept ",
-			"font",
-			"jumbotron",
-			"html",
-			"text",
-			"font-size",
-			"quote",
-			"hero",
-			"active",
-			"keyrelabel",
-			"create",
-			"createtimes",
-			"$scope.",
-			"getdata",
-			"$scope.",
-			"status",
-			"http",
-			"control",
-			"controller",
-			"edit",
-			"dataset",
-			"app"
+			"svg.append"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -366,6 +364,20 @@
 		"regex": false,
 		"replace_history":
 		[
+			"pHard",
+			"fHard",
+			"mHard",
+			"pHard",
+			"admitted",
+			"fh",
+			"mh",
+			"ph",
+			"mal",
+			"fem",
+			"group",
+			"18",
+			"",
+			"data",
 			""
 		],
 		"reverse": false,
@@ -377,186 +389,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "tooltip.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3241,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								264,
-								264
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"word_separators": "./\\\\()\\\"\\'-:,.;<>~!@#%^&*|+=[]{}`~?"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5450,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3844,
-								3844
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 493.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "other material.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1310,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1308,
-								1308
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "force-directed.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14880,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								14228,
-								14228
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true,
-							"word_separators": "./\\\\()\\\"\\'-:,.;<>~!@#%^&*|+=[]{}`~?"
-						},
-						"translation.x": 0.0,
-						"translation.y": 8133.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "todo.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 199,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								199,
-								199
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 3,
-					"file": "force-directed.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14880,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13294,
-								13294
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true,
-							"word_separators": "./\\\\()\\\"\\'-:,.;<>~!@#%^&*|+=[]{}`~?"
-						},
-						"translation.x": 0.0,
-						"translation.y": 6463.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -577,18 +411,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.659451706904,
 			1.0
 		],
 		"rows":
@@ -601,7 +428,7 @@
 	"project": "simpsons.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -610,8 +437,60 @@
 		"selected_items":
 		[
 			[
+				"donut",
+				"simpsons-paradox/scripts/donutDirect.js"
+			],
+			[
+				"controll",
+				"simpsons-paradox/scripts/controllers/controller.js"
+			],
+			[
+				"slider",
+				"simpsons-paradox/scripts/slider.js"
+			],
+			[
+				"line",
+				"simpsons-paradox/scripts/lineDirect.js"
+			],
+			[
+				"donutdi",
+				"simpsons-paradox/scripts/donutDirect.js"
+			],
+			[
+				"index",
+				"simpsons-paradox/index.html"
+			],
+			[
 				"todo",
 				"simpsons-paradox/todo.txt"
+			],
+			[
+				"direc",
+				"simpsons-paradox/scripts/lineDirect.js"
+			],
+			[
+				"app",
+				"simpsons-paradox/scripts/app.js"
+			],
+			[
+				"line-chart",
+				"simpsons-paradox/line-chart.js"
+			],
+			[
+				"don",
+				"simpsons-paradox/scripts/donutDirect.js"
+			],
+			[
+				"app.js",
+				"simpsons-paradox/scripts/app.js"
+			],
+			[
+				"",
+				"simpsons-paradox/scripts/donutDirect.js"
+			],
+			[
+				"donu",
+				"simpsons-paradox/donut-chart.js"
 			],
 			[
 				"force-",
@@ -650,10 +529,6 @@
 				"simpsons-paradox/simp-style.css"
 			],
 			[
-				"index",
-				"simpsons-paradox/index.html"
-			],
-			[
 				"line-",
 				"simpsons-paradox/line-chart.js"
 			]
@@ -683,7 +558,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 227.0,
+	"side_bar_width": 161.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -1,11 +1,24 @@
 todo:
+fix the line spacing
 
 victor:
-  put the acceptance rate on the left?
+  put the acceptance rate on the left
+  add transitions on all the updating
+  change proportions to values between 0 and 1
 
 lewis:
+	make the tooltip flatui style
   two pie charts in each tooltip
   add label to the top axis that says "departments."
 	make the bandign stronger
 	add x to the axis label
 	move the mosueover behavior for the donut charts into the tooltip?
+	format numbers
+	add a part like "Why is chemical engineering easier to enter than english lit?"
+
+bottom part:
+make a pair of sliders
+turn the sliders into donut dials that you can drag around
+create little bars to go in the table
+
+get the donut directive hooked up to the controller

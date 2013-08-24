@@ -22,26 +22,27 @@ app.directive('donut', function(){
 	var pie = d3.layout.pie()
 	    .sort(null)
 	    .value(function(d) { return d.percent; });
+
 	    
 	// Runs during compile
 	return {
 		restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
 		link: function(scope, elem, attrs) {
 			var gender = attrs.gender;
-			scope.$watch("proportions", function(val){
+			scope.$watch("proportions.male.admitted + proportions.female.admitted", function(val){
 
 			d3.select(elem[0]).select("svg").remove();
 			
 			var data = [
-				{accepted: 'accepted', percent: scope.proportions[gender] },
-				{accepted: 'rejected', percent: (100 - scope.proportions[gender]) }
+				{accepted: 'accepted', percent: scope.proportions[gender].admitted },
+				{accepted: 'rejected', percent: (100 - scope.proportions[gender].admitted) }
 			];
-
-			var svg = d3.select(elem[0]).append("svg")
-			    .attr("width", width)
-			    .attr("height", height)
-			  .append("g")
-			    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+			
+		  var svg = d3.select(elem[0]).append("svg")
+		      .attr("width", width)
+		      .attr("height", height)
+		    .append("g")
+		      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 			var group = svg.selectAll("arc")
 			     .data(pie(data))
@@ -82,7 +83,7 @@ app.directive('donut', function(){
 			    .attr("dy", ".35em")
 			    .style("text-anchor", "end")
 			    .text(function(d) { return d; });
-			})
-		}
-	};
-});
+			}); //end $watch
+		}//end linking function
+	}; //end return
+}); //end directive

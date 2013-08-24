@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simpson's Paradox</title>
-    <script type="text/javascript" src="d3.js"></script>
-    <script type="text/javascript" src="underscore.js"></script>
+
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link href="Flat-UI-master/css/flat-ui.css" rel="stylesheet">
     <!-- <link rel="shortcut icon" href="Flat-UI-master/images/favicon.ico"> -->
@@ -56,29 +55,88 @@
       <div class = "row">
         <div class="col-lg-5 ">   
           <h4>What Simpson's Paradox is <em>not</em></h4>
-          <p><strong>Simpson's:</strong>It was <a href="http://www.jstor.org/discover/10.2307/2331677?uid=2&uid=4&sid=21102567680247">first mentioned</a> by British statistician <a href="http://en.wikipedia.org/wiki/Udny_Yule">Udny Yule</a> in 1903.</p>
-          <p><strong>A paradox:</strong>Simpson's Paradox is just a special case ommitting variable bias.</p>
+          <p><strong>Simpson's:</strong> It was <a href="http://www.jstor.org/discover/10.2307/2331677?uid=2&uid=4&sid=21102567680247">first mentioned</a> by British statistician <a href="http://en.wikipedia.org/wiki/Udny_Yule">Udny Yule</a> in 1903.</p>
+          <p><strong>A paradox:</strong> Simpson's Paradox is just a special case of <a href="http://en.wikipedia.org/wiki/Omitted-variable_bias">ommitted variable bias</a>. W.V. Quine would call it a <a href="http://en.wikipedia.org/wiki/Paradox#Quine.27s_classification_of_paradoxes">vertical paradox</a>.</p>
           <p><strong>Every ommitted variable problem:</strong> Women earn only 77 percent of what men do, but according to Cornell economists <a href="http://digitalcommons.ilr.cornell.edu/cgi/viewcontent.cgi?article=1248&context=ilrreview">Francine Blau and Lawrence Kahn</a>, accounting for work experience, education, industry, and unionization shrinks the gap to 91% (p. 52). So, discrimination matters less than the `77 percent` stat would lead you to believe. But is this Simpson's paradox? No, because the correction isn't large enough for the effect of gender to vanish or change sign.</p>
         </div>
         <div class="col-lg-5">
           <h4>Why it matters</h4>
-          <p>Simpson's Paradox usually fools us where performance and demographics mingle. For example, <a href="http://iowahawk.typepad.com/iowahawk/2011/03/longhorns-17-badgers-1.html">on elementary school tests</a>, minority students in Texas outperform their peers in Wisconsin, but Texas has so many minority students that Wisconsin dominates it in state rankings. Ignoring demographics might lead Texas schools to waste money copying Wisconsin.</p>
+          <p>Simpson's Paradox usually fools us where performance and demographics mingle. For example, <a href="http://iowahawk.typepad.com/iowahawk/2011/03/longhorns-17-badgers-1.html">on elementary school tests</a>, minority students in Texas outperform their peers in Wisconsin, but Texas has so many minority students that Wisconsin dominates it in state rankings. Ignoring demographics might lead Texas schools to waste money copying Wisconsin.fla</p>
         </div>
       </div>
-      <div class="row" ng-controller="MainCtrl">
-        <!-- <input type="text" value="" placeholder="Inactive" class="span3" ng-model="proportions" gender="male" ng-submit/> -->
-        <div donut gender="male" class="col-lg-3"></div>  
-        <div donut gender="female" class="col-lg-3"></div>  
-      </div>
-      <div class="row">
-        <div line-chart></div>
+      <div ng-controller="MainCtrl">
+
+        <div class="top-table">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th colspan = "1"></th>
+                <th colspan = "2"># applied</th>
+                <th colspan = "2"># admitted</th>
+                <th colspan = "2">% admitted</th>
+              </tr>
+              <tr>
+                <th colspan = "1">departments</th>
+                <th colspan = "1">men</th>
+                <th colspan = "1">women</th>
+                <th colspan = "1">men</th>
+                <th colspan = "1">women</th>
+                <th colspan = "1">men</th>
+                <th colspan = "1">women</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>"Easy" (Chemical Eng.)</td>
+                <td>{{proportions.male.pHard}}</td>
+                <td>asdf</td>
+                <td>asdf</td>
+                <td>asdf</td>
+                <td>asdf</td>
+                <td>asdf</td>
+              </tr>
+              <tr>
+                <td>"Hard" (English Lit.)</td>
+                <td>asdf</td>
+                <td>asdf</td>
+                <td>asdf</td>
+                <td>asdf</td>
+                <td>
+                  <div donut gender="male"></div>  
+                </td>
+                <td>
+                  <div donut gender="female"></div>  
+                </td>
+              </tr>
+              <tr class="success">
+                <td>Combined</td>
+                <td>asdf</td>
+                <td>asdf</td>
+                <td>asdf</td>
+                <td>asdf</td>
+                <td>asdf</td>
+                <td>asdf</td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /example -->
+        
+        <div class="span4">
+          <div line-chart></div>
+          <div slider class="ui-slider" gender="male"></div>
+          <div slider class="ui-slider" gender="female"></div>
+        </div>
       </div>
     </div><!-- /.container -->  
     <div class="tooltip" style="opacity:0;"></div>
-
   </body>
     <!-- libraries: js -->
+    <script type="text/javascript" src="d3.js"></script>
+    <script type="text/javascript" src="underscore.js"></script>
     <script src="lib/angular.min.js"></script>
+    <script src="Flat-UI-master/js/jquery-1.8.3.min.js"></script>
+    <script src="Flat-UI-master/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="Flat-UI-master/js/bootstrap.min.js"></script>
 
     <!-- non-angular scripts -->
     <script src="line-chart.js"></script>
@@ -88,6 +146,12 @@
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/controller.js"></script>
     <script src="scripts/donutDirect.js"></script>
+    <script src="scripts/slider.js"></script>
     <script src="scripts/lineDirect.js"></script>
+    <script type="text/javascript">
+
+    </script>
+
 </html>
