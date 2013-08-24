@@ -83,3 +83,7 @@ div.tooltip {
   padding: 15px;
   color:white;
 }
+
+text.year-ratio, text.combined-ratio{
+  text-anchor: end;
+}

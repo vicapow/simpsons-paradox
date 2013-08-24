@@ -270,9 +270,10 @@ var cl = function(row, col, fociId){
       var r = Math.sqrt( (d.x - cx) * (d.x - cx) + (d.y - cy) * (d.y - cy))
       maxr = r > maxr ? r : maxr
     })
+    rot = 3/4 * Math.PI /* up and to the left */
     return {
-      x : cx + Math.cos(45) * maxr
-      , y : cy - Math.sin(45) * maxr
+      x : cx + Math.cos(rot) * maxr
+      , y : cy - Math.sin(rot) * maxr
     }
   }
   , ratioLabelFormat = function(d){ 

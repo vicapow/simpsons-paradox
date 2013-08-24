@@ -2,7 +2,6 @@ todo:
 fix the line spacing
 
 victor:
-  put the acceptance rate on the left
   add transitions on all the updating
   change proportions to values between 0 and 1
 
