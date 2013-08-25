@@ -21,10 +21,8 @@ EXPERIMENT: radius changes with # applicants
 simpson's paradox alert
 highlight whichever one is larger
 title for the graph
-reformat the charts
 share buttons
 google analytics
-fix the accepted and rejected colors
 add x to the top graph x-axis label
 make tooltip smalelr
 

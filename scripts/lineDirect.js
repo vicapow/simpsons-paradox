@@ -87,20 +87,6 @@ app.directive('lineChart', function(){
         .attr("stroke",red)
         .attr("stroke-width","1.5px")
 
-      // women ball
-      svg.append("g")
-        .attr("class","g-red-circles")
-        .selectAll("red circles")
-        .data([proportions.easy])
-        .enter()
-        .append("circle")
-        .attr({
-          class: "red-circles",
-          r: 6
-          , fill: red
-          , stroke: '#2C3E50'
-        })
-
       // men line
       svg.append("path")
         .datum([
@@ -123,6 +109,20 @@ app.directive('lineChart', function(){
           'class': 'blue-circles'
           , r: 6
           , fill: blue
+          , stroke: '#2C3E50'
+        })
+
+      // women ball
+      svg.append("g")
+        .attr("class","g-red-circles")
+        .selectAll("red circles")
+        .data([proportions.easy])
+        .enter()
+        .append("circle")
+        .attr({
+          class: "red-circles",
+          r: 6
+          , fill: red
           , stroke: '#2C3E50'
         })
 
