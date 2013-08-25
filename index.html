@@ -88,41 +88,74 @@
             <tbody>
               <tr>
                 <td>"Easy" (Chemical Eng.)</td>
-                <td>{{departments.easy.male.applied}}</td>
-                <td>{{departments.easy.female.applied}}</td>
-                <td>{{departments.easy.male.admitted}}</td>
-                <td>{{departments.easy.female.admitted}}</td>
-                <td>{{rates.male.easy * 100}}</td>
-                <td>{{rates.female.easy * 100}}</td>
+                <td>
+                  {{departments.easy.male.applied| number:0 }} <br>
+                  <div bar measure="applied" gender="male" program = "easy"></div>
+                </td>
+                <td>
+                  {{departments.easy.female.applied| number:0 }}<br>
+                  <div bar measure="applied" gender="female" program = "easy"></div>
+                </td>
+                <td>
+                  {{departments.easy.male.admitted| number:0 }} <br>
+                  <div bar measure="admitted" gender="male" program = "easy"></div>
+                </td>
+                <td>
+                  {{departments.easy.female.admitted| number:0 }} <br>
+                  <div bar measure="admitted" gender="female" program = "easy"></div>
+                </td>
+                <td>
+                  <div donut gender="male" department="easy"></div>
+                </td>
+                <td>
+                  <div donut gender="female" department="easy"></div>
+                </td>
               </tr>
+
+
               <tr>
                 <td>"Hard" (English Lit.)</td>
-                <td>{{departments.hard.male.applied}}</td>
-                <td>{{departments.hard.female.applied}}</td>
-                <td>{{departments.hard.male.admitted}}</td>
-                <td>{{departments.hard.female.admitted}}</td>
-                <td>{{rates.male.hard * 100}}</td>
-                <td>{{rates.female.hard * 100}}</td>
-                <td>
-                  <div donut gender="male"></div>  
+                <td>{{departments.hard.male.applied | number:0 }} <br>
+                  <div bar measure="applied" gender="male" program = "hard"></div>
                 </td>
                 <td>
-                  <div donut gender="female"></div>  
+                  {{departments.hard.female.applied | number:0 }} <br>
+                  <div bar measure="applied" gender="female" program = "hard"></div>
+                </td>
+                <td>
+                  {{departments.hard.male.admitted | number:0 }} <br>
+                  <div bar measure="admitted" gender="male" program = "hard"></div>
+                </td>
+                <td>
+                  {{departments.hard.female.admitted | number:0 }} <br>
+                  <div bar measure="admitted" gender="female" program = "hard"></div>
+                </td>
+                <td>
+                  <div donut gender="male" department="hard"></div>
+                </td>
+                <td>
+                  <div donut gender="female" department="hard"></div>
                 </td>
               </tr>
-              <tr class="success">
+              
+              
+              <tr>
                 <td>Combined</td>
-                <td>{{departments.hard.male.applied + departments.easy.male.applied}}</td>
-                <td>{{departments.hard.female.applied + departments.easy.female.applied}}</td>
-                <td>{{departments.hard.male.admitted + departments.easy.male.admitted}}</td>
-                <td>{{departments.hard.female.admitted + departments.easy.female.admitted}}</td>
-                <td>{{combined.male.acceptance * 100}}</td>
-                <td>{{combined.female.acceptance * 100}}</td>
+                <td>{{departments.hard.male.applied + departments.easy.male.applied| number:0 }}</td>
+                <td>{{departments.hard.female.applied + departments.easy.female.applied| number:0 }}</td>
+                <td>{{departments.hard.male.admitted + departments.easy.male.admitted| number:0 }}</td>
+                <td>{{departments.hard.female.admitted + departments.easy.female.admitted| number:0 }}</td>
+                <td>
+                  <div donut gender="male" department="combined"></div>
+                </td>
+                <td>
+                  <div donut gender="female" department="combined"></div>
+                </td>
               </tr>
             </tbody>
           </table>
         </div><!-- /example -->
-        
+      
         <div class="span4">
           <div line-chart></div>
           <div slider class="ui-slider" gender="female"></div>
@@ -152,8 +185,6 @@
     <script src="scripts/donutDirect.js"></script>
     <script src="scripts/slider.js"></script>
     <script src="scripts/lineDirect.js"></script>
-    <script type="text/javascript">
-
-    </script>
+    <script src="scripts/barDirect.js"></script>
 
 </html>

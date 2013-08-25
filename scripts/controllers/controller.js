@@ -29,7 +29,7 @@ app.controller('MainCtrl', ['$scope', function($scope) {
     }
     // total male and female applicants
     // constant
-    , pop = { male: 2691, female: 1835 }
+    , pop = $scope.pop = { male: 2691, female: 1835 }
     // department data
     // not constant. this will update with the slider and be used in the table
     , departments = $scope.departments = {

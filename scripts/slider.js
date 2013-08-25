@@ -11,7 +11,7 @@ app.directive("slider", function(){
         , orientation: "horizontal"
         , range: "min"
       })
-      .on("slidechange", function(event, ui){
+      .on("slide", function(event, ui){
         scope.$apply(function(){
           scope.updateProportions(ui.value, attrs.gender)
         })

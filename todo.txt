@@ -1,14 +1,12 @@
 todo:
 fix the line spacing
 
-victor:
-  add transitions on all the updating
 
 lewis:
 	make the tooltip flatui style
-  two pie charts in each tooltip
+	add pie charts in tooltips
   add label to the top axis that says "departments."
-	make the bandign stronger
+	make the banding stronger
 	move the mosueover behavior for the donut charts into the tooltip?
 	format numbers
 	add a part like "Why is chemical engineering easier to enter than english lit?"
@@ -16,3 +14,24 @@ lewis:
 bottom part:
 turn the sliders into donut dials that you can drag around
 create little bars to go in the table
+
+SHORT TERM:
+fix line spacing
+"percent admitted" too close to numbers
+100 getting cut off in x-axis of line chart
+EXPERIMENT: radius changes with # applicants
+simpson's paradox alert
+highlight whichever one is larger
+title for the graph
+reformat the charts
+share buttons
+google analytics
+fix the accepted and rejected colors
+add x to the top graph x-axis label
+make tooltip smalelr
+
+
+TEXT:
+attribute the original authors of that graph
+sentence about vudlab
+start off with the berkeley thing
