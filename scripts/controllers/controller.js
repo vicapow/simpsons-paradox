@@ -22,10 +22,10 @@ app.controller('MainCtrl', ['$scope', function($scope) {
     // the proportion of men and women that applied to the easy and hard programs
     // not constant. this data will change with the sliders
     , proportions = $scope.proportions = { 
-      female: { easy: 0.2, hard: 0.6 } 
-      , male: { easy: 0.8, hard: 0.4 }
-      // NOTE: female.easy + male.easy === 1
-      // NOTE: female.hard + male.hard === 1
+      easy: { female: 0.6, male: 0.4 }
+      , hard: { female: 0.4, male: 0.6 }
+      // easy.female + hard.female must equal 1
+      // easy.male + hard.male must equal 1
     }
     // total male and female applicants
     // constant
@@ -35,40 +35,48 @@ app.controller('MainCtrl', ['$scope', function($scope) {
     , departments = $scope.departments = {
       easy: {
         male: {
-          applied: pop.male * proportions.male.easy
-          , admitted: pop.male * proportions.male.easy * rates.male.easy
-          , percentAdmitted: rates.male.easy * 100
+          applied: pop.male * proportions.easy.male
+          , admitted: pop.male * proportions.easy.male * rates.male.easy
         }
         , female: {
-          applied: pop.female * proportions.female.easy
-          , admitted: pop.female * proportions.female.easy * rates.female.easy
-          , percentAdmitted: rates.female.easy * 100
+          applied: pop.female * proportions.easy.female
+          , admitted: pop.female * proportions.easy.female * rates.female.easy
         }
       }
       , hard: {
         male: {
-          applied: pop.male * proportions.male.hard
-          , admitted: pop.male * proportions.male.hard * rates.male.hard
-          , percentAdmitted: rates.male.hard * 100
+          applied: pop.male * proportions.hard.male
+          , admitted: pop.male * proportions.hard.male * rates.male.hard
         }
         , female: {
-          applied: pop.female * proportions.female.hard
-          , admitted: pop.female * proportions.female.hard * rates.female.hard
-          , percentAdmitted: rates.female.hard * 100
+          applied: pop.female * proportions.hard.female
+          , admitted: pop.female * proportions.hard.female * rates.female.hard
         }
       }
     }
+    , combined = $scope.combined = {
+      male: {
+        acceptance: (departments.easy.male.admitted + departments.hard.male.admitted) / pop.male
+      }
+      , female: {
+        acceptance: (departments.easy.female.admitted + departments.hard.female.admitted) / pop.female
+      }
+    }
 
-  $scope.updateData = function(p, gender){
+  $scope.updateProportions = function(p, gender){
+    // adjust the ratio of women that applied to each department
     var p = Number(p) / 100
-      , rate = rates[gender]
-      , easy = departments.easy[gender]
-      , hard = departments.hard[gender]
 
-    easy.admitted = p * rate.hard
-    easy.percentAdmitted = p * 100
+    proportions.easy[gender] = p
+    proportions.hard[gender] = 1 - p
 
-    hard.admitted = p * rate.hard + ( 1 - p) * rate.easy
-    hard.percentAdmitted = p * 100
+    departments.easy[gender].applied = pop[gender] * proportions.easy[gender]
+    departments.easy[gender].admitted = pop[gender] * proportions.easy[gender] * rates[gender].easy
+
+    departments.hard[gender].applied = pop[gender] * proportions.hard[gender]
+    departments.hard[gender].admitted = pop[gender] * proportions.hard[gender] * rates[gender].hard
+
+    combined[gender].acceptance = (departments.easy[gender].admitted + departments.hard[gender].admitted) / pop[gender]
+
   };
 }]);

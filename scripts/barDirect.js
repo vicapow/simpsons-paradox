@@ -8,8 +8,8 @@ app.directive('bar', function(){
     , red = '#E74C3C'
   // Runs during compile
   return {
-    restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
-    link: function(scope, elem, attrs) {
+    restrict: 'A' // E = Element, A = Attribute, C = Class, M = Comment
+    , link: function(scope, elem, attrs) {
       var gender = attrs.gender
         , measure = attr.measure
         , program = attr.program
@@ -26,7 +26,6 @@ app.directive('bar', function(){
       var bar = svg.select("bar")
         .data(scope.numbers[gender][measure])
       group.append()
-      })
     }
   }
 })

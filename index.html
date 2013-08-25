@@ -92,8 +92,8 @@
                 <td>{{departments.easy.female.applied}}</td>
                 <td>{{departments.easy.male.admitted}}</td>
                 <td>{{departments.easy.female.admitted}}</td>
-                <td>{{departments.easy.male.percentAdmitted}}</td>
-                <td>{{departments.easy.female.percentAdmitted}}</td>
+                <td>{{rates.male.easy * 100}}</td>
+                <td>{{rates.female.easy * 100}}</td>
               </tr>
               <tr>
                 <td>"Hard" (English Lit.)</td>
@@ -101,8 +101,8 @@
                 <td>{{departments.hard.female.applied}}</td>
                 <td>{{departments.hard.male.admitted}}</td>
                 <td>{{departments.hard.female.admitted}}</td>
-                <td>{{departments.hard.male.percentAdmitted}}</td>
-                <td>{{departments.hard.female.percentAdmitted}}</td>
+                <td>{{rates.male.hard * 100}}</td>
+                <td>{{rates.female.hard * 100}}</td>
                 <td>
                   <div donut gender="male"></div>  
                 </td>
@@ -112,12 +112,12 @@
               </tr>
               <tr class="success">
                 <td>Combined</td>
-                <td>asdf</td>
-                <td>asdf</td>
-                <td>asdf</td>
-                <td>asdf</td>
-                <td>asdf</td>
-                <td>asdf</td>
+                <td>{{departments.hard.male.applied + departments.easy.male.applied}}</td>
+                <td>{{departments.hard.female.applied + departments.easy.female.applied}}</td>
+                <td>{{departments.hard.male.admitted + departments.easy.male.admitted}}</td>
+                <td>{{departments.hard.female.admitted + departments.easy.female.admitted}}</td>
+                <td>{{combined.male.acceptance * 100}}</td>
+                <td>{{combined.female.acceptance * 100}}</td>
               </tr>
             </tbody>
           </table>
@@ -125,8 +125,8 @@
         
         <div class="span4">
           <div line-chart></div>
-          <div slider class="ui-slider" gender="male"></div>
           <div slider class="ui-slider" gender="female"></div>
+          <div slider class="ui-slider" gender="male"></div>
         </div>
       </div>
     </div><!-- /.container -->  

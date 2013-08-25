@@ -29,16 +29,19 @@ app.directive('donut', function(){
     restrict: 'A' // E = Element, A = Attribute, C = Class, M = Comment
     , link: function(scope, elem, attrs) {
       var gender = attrs.gender
-      scope.$watch("departments.easy." + gender + ".admitted", function(val){
+        , rates = scope.rates
+        , depts = scope.departments
+      scope.$watch("departments.easy." + gender + ".admitted + departments.hard." + gender + ".admitted", function(val){
       d3.select(elem[0]).select("svg").remove()
-      
+      var admitted = depts.easy[gender].admitted + depts.hard[gender].admitted
+      var applied = depts.easy[gender].applied + depts.hard[gender].applied
       var data = [{ 
           accepted: 'accepted'
-          , percent: scope.departments.easy[gender].percentAdmitted 
+          , percent: admitted / applied * 100
         }
         , { 
           accepted: 'rejected'
-          , percent: (100 - scope.departments.easy[gender].percentAdmitted) 
+          , percent: (applied - admitted) / applied * 100
         }]
         , svg = d3.select(elem[0]).append("svg")
           .attr("width", width)
