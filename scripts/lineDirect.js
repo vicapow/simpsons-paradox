@@ -66,15 +66,21 @@ app.directive('lineChart', function(){
         .text('percent easy dept')
         .classed('x-axis-label')
 
-      var combinedSlope = svg.append('path')
-        .datum([
-          { x: 0, y: 0 }
-          , { x: 100, y: 100 }
-        ]).attr('class','line')
-        .attr('d', line)
-        .attr('stroke', black)
-        .attr('stroke-width', '1.5px')
-        .attr('stroke-dasharray', '5,5')
+
+      function addDashedLine(g){
+        return g.append('path')
+          .datum([
+            { x: 0, y: 0 }
+            , { x: 100, y: 0 }
+          ]).attr('class','line')
+          .attr('d', line)
+          .attr('stroke', black)
+          .attr('stroke-width', '1.5px')
+          .attr('stroke-dasharray', '5,5')
+      }
+
+      var redBallLine = addDashedLine(svg)
+      var blueBallLine = addDashedLine(svg)
 
       // women line
       svg.append("path")
@@ -161,30 +167,16 @@ app.directive('lineChart', function(){
             , cy: function(d){ return y(d.y) }
           })
 
-        var m = (blueBallData.y - redBallData.y ) / ( blueBallData.x - redBallData.x )
-          , b = blueBallData.y - m * blueBallData.x
-          , x1, x2 = { x: 100, y: 50 }
-        if(m === Infinity || m === -Infinity){
-          x1 = { x: blueBallData.x , y: 0}
-          x2 = { x: blueBallData.x , y: 100}
-        }else{
-          if( b >= 0 ) {
-            if( b <= 100 ) x1 = { x: 0, y: b }
-            else x1 = { x: (100 - b) / m, y: 100 }
-          }else{
-            x1 = { x: (-b / m), y: 0}
-          }
-          var yint = 100 * m + b // y value at 100=x
-          if( yint <= 100 && yint >= 0){
-            x2 = { x: 100, y: yint }
-          }else{
-            if(m > 0) x2 = { x: (100 - b) /m, y: 100}
-            else x2 = { x: (0 - b) /m, y: 0}
-          }
-        }
-        combinedSlope
-          .datum([x1, x2])
-          .attr('d', line)
+        redBallLine.datum([
+          { x: 0, y: redBallData.y }
+          , { x: redBallData.x, y: redBallData.y }
+        ]).attr('d', line)
+
+        blueBallLine.datum([
+          { x: 0, y: blueBallData.y }
+          , { x: blueBallData.x, y: blueBallData.y }
+        ]).attr('d', line)
+
       })
     }
   }

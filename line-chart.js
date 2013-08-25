@@ -7,26 +7,26 @@ var blue = '#3498DB',
  red = '#E74C3C';
 
 var blueData = [
-	{x: 1, y: 6, col: blue},
-	{x: 2, y: 7, col: blue},
-	{x: 3, y: 8, col: blue},
-	{x: 4, y: 9, col: blue},
+  {x: 1, y: 6, col: blue},
+  {x: 2, y: 7, col: blue},
+  {x: 3, y: 8, col: blue},
+  {x: 4, y: 9, col: blue},
 ];
 
 var redData = [
-	{x: 8, y: 1, col: red},
-	{x: 9, y: 2, col: red},
-	{x: 10, y: 3, col: red},
-	{x: 11, y: 4, col: red}
+  {x: 8, y: 1, col: red},
+  {x: 9, y: 2, col: red},
+  {x: 10, y: 3, col: red},
+  {x: 11, y: 4, col: red}
 ]
 
 var x = d3.scale.linear()
-		.domain([0,12])
-    .range([0, width]);
+  .domain([0,12])
+  .range([0, width])
 
 var y = d3.scale.linear()
-		.domain([0,10])
-    .range([height, 0]);
+  .domain([0,10])
+  .range([height, 0])
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -70,9 +70,9 @@ gXAxis.append("text")
 
 svg.append("path")
     .datum([
-    		{x: 7, y: 0},
-    		{x: 13, y: 6}
-    	])
+        {x: 7, y: 0},
+        {x: 13, y: 6}
+      ])
     .attr("class", "line")
     .attr("d", line)
     .attr("stroke",red)
@@ -80,9 +80,9 @@ svg.append("path")
 
 svg.append("path")
     .datum([
-    		{x: 0, y: 8.2},
-    		{x: 13, y: 1}
-    	])
+        {x: 0, y: 8.2},
+        {x: 13, y: 1}
+      ])
     .attr("class", "trend-line")
     .attr("d", line)
     .attr("stroke", '#999')
@@ -91,49 +91,49 @@ svg.append("path")
 
 svg.append("path")
     .datum([
-    		{x: 0, y: 5},
-    		{x: 6, y: 11}
-    	])    .attr("class", "line")
+        {x: 0, y: 5},
+        {x: 6, y: 11}
+      ])    .attr("class", "line")
     .attr("d", line)
     .attr("stroke",blue)
     .attr("stroke-width","1.5px");
 
 svg.append("g")
-	.attr("class","g-blue-circles")
-	.selectAll("blue circles")
-	.data(blueData)
-	.enter()
-	.append("svg:circle")
-	.attr({
-		class: "blue-cicles",
-		r: 6,
-		cx: function(d, i){
-			return x(d.x);
-		},
-		cy: function(d, i){
-			return y(d.y);
-		},
-		fill: blue,
-		stroke: '#2C3E50'
-	});
+  .attr("class","g-blue-circles")
+  .selectAll("blue circles")
+  .data(blueData)
+  .enter()
+  .append("svg:circle")
+  .attr({
+    class: "blue-cicles",
+    r: 6,
+    cx: function(d, i){
+      return x(d.x);
+    },
+    cy: function(d, i){
+      return y(d.y);
+    },
+    fill: blue,
+    stroke: '#2C3E50'
+  });
 
 
 svg.append("g")
-	.attr("class","g-red-circles")
-	.selectAll("red circles")
-	.data(redData)
-	.enter()
-	.append("circle")
-	.attr({
-		r: 6,
-		cx: function(d, i){
-			return x(d.x);
-		},
-		cy: function(d, i){
-			return y(d.y);
-		},
-		fill: red,
-		stroke: '#2C3E50'
-	});
+  .attr("class","g-red-circles")
+  .selectAll("red circles")
+  .data(redData)
+  .enter()
+  .append("circle")
+  .attr({
+    r: 6,
+    cx: function(d, i){
+      return x(d.x);
+    },
+    cy: function(d, i){
+      return y(d.y);
+    },
+    fill: red,
+    stroke: '#2C3E50'
+  });
 
 
