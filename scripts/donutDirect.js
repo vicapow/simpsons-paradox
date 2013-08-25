@@ -56,7 +56,7 @@ app.directive('donut', function(){
         oppApplied = 1
       }
 
-      highlight = ( admitted / applied ) > ( oppAdmitted / oppApplied ) ? 0.3 : 0
+      highlight = ( admitted / applied ) > ( oppAdmitted / oppApplied ) ? 0.6 : 0
       
       var data = [{ 
           accepted: 'rejected'
@@ -75,7 +75,7 @@ app.directive('donut', function(){
       svg.append("circle")
         .attr("r", highlightRadius)
         .style('opacity', highlight)
-        .style("fill", green)
+        .style("fill", '#bdc3c7') 
 
       var group = svg.selectAll("arc")
           .data(pie(data)).enter().append("g")
