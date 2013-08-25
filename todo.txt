@@ -17,8 +17,6 @@ create little bars to go in the table
 
 SHORT TERM:
 fix line spacing
-"percent admitted" too close to numbers
-100 getting cut off in x-axis of line chart
 EXPERIMENT: radius changes with # applicants
 simpson's paradox alert
 highlight whichever one is larger

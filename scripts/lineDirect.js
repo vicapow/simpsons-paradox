@@ -1,6 +1,6 @@
 app.directive('lineChart', function(){
 
-  var margin = { top: 20, right: 10, bottom: 40, left: 40 }
+  var margin = { top: 20, right: 20, bottom: 45, left: 45 }
     , width = 380 - margin.left - margin.right
     , height = 300 - margin.top - margin.bottom
     //flatui colors
@@ -49,7 +49,7 @@ app.directive('lineChart', function(){
         .call(yAxis)
 
       gYAxis.append("text")
-        .attr("transform", " translate(" + (-28) + "," + (height / 2) + ") rotate(-90)")
+        .attr("transform", " translate(" + (-35) + "," + (height / 2) + ") rotate(-90)")
         .style("text-anchor", "middle")
         .attr("font-size","18px")
         .text("percent admitted")
@@ -60,7 +60,7 @@ app.directive('lineChart', function(){
         .call(xAxis)
 
       gXAxis.append("text")
-        .attr("transform", " translate(" + (width / 2) + "," + (35) +  ")")
+        .attr("transform", " translate(" + (width / 2) + "," + (40) +  ")")
         .style("text-anchor", "middle")
         .attr("font-size","18px")
         .text('percent easy dept')
