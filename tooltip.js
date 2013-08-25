@@ -75,32 +75,34 @@ d3.select('.svg-line').selectAll('circle')
 
 d3.selectAll(".arc")
   .on("mousemove", function(d){
-
       tooltip.transition().duration(100)
         .style("opacity", .9);
-      tooltip
-        .html(
-            '<table style="margin-bottom: 5px;" border="0" align="center" cellpadding="5" cellspacing="3"><tbody><tr>'
-            +'<td style="border-radius: 2px; font-weight: bold; background-color:' 
-            + color(d.data.accepted) 
-            + ';">'
-            + d.data.accepted 
-            + "</td><td>"
-            + d.data.percent + "%"
-            + '</td>'  
-            + '</tr></tbody></table>'  
-        )
+      tooltip.html(
+        '<table style="margin-bottom: 5px;" border="0" align="center" cellpadding="5" cellspacing="3">'
+          + '<tbody>'
+            + '<tr>'
+              + '<td style="border-radius: 2px; font-weight: bold; background-color:' + color(d.data.accepted) + ';">'
+                + d.data.accepted 
+              + '</td>'
+              + '<td>'
+                + d.data.percent + '%'
+              + '</td>'
+            + '</tr>'
+          + '</tbody>'
+        + '</table>')
         .style("left", (d3.event.pageX + 10)  + "px")
-        .style("top", (d3.event.pageY - 70) + "px"); 
+        .style("top", (d3.event.pageY - 70) + "px")
 
     d3.select(this).select("path").transition().duration(50)
       .attr("stroke", "white")
       .attr("stroke-width","10px")
   })
   .on("mouseout", function(){
-    tooltip.transition().duration(200)
-      .style("opacity", 0);
+    tooltip
+      .transition()
+      .duration(200)
+      .style("opacity", 0)
     d3.select(this).select("path").transition().duration(50)
       .attr("stroke", "white")
-      .attr("stroke-width","1px");
+      .attr("stroke-width","1px")
   })  

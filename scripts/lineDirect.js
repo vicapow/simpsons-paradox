@@ -66,6 +66,16 @@ app.directive('lineChart', function(){
         .text('percent easy dept')
         .classed('x-axis-label')
 
+      var combinedSlope = svg.append('path')
+        .datum([
+          { x: 0, y: 0 }
+          , { x: 100, y: 100 }
+        ]).attr('class','line')
+        .attr('d', line)
+        .attr('stroke', black)
+        .attr('stroke-width', '1.5px')
+        .attr('stroke-dasharray', '5,5')
+
       // women line
       svg.append("path")
         .datum([
@@ -86,9 +96,7 @@ app.directive('lineChart', function(){
         .append("circle")
         .attr({
           class: "red-circles",
-          r: 6,
-          cx: function(d, i){ return x(d.female) }
-          , cy: function(d, i){ return y(d.female) }
+          r: 6
           , fill: red
           , stroke: '#2C3E50'
         })
@@ -114,8 +122,6 @@ app.directive('lineChart', function(){
         .attr({
           'class': 'blue-circles'
           , r: 6
-          , cx: function(d, i){ return x(d.male) }
-          , cy: function(d, i){ return y(d.male) }
           , fill: blue
           , stroke: '#2C3E50'
         })
@@ -129,11 +135,13 @@ app.directive('lineChart', function(){
         // women
         admitted = depts.easy.female.admitted + depts.hard.female.admitted
         applied = depts.easy.female.applied + depts.hard.female.applied
+
+        var redBallData = {
+          x: proportions.easy.female * 100
+          , y: (admitted / applied) * 100
+        }
         svg.select(".red-circles")
-          .data([{
-            x: proportions.easy.female * 100
-            , y: (admitted / applied) * 100
-          }])
+          .data([redBallData])
           .attr({
             cx: function(d){ return x(d.x) }
             , cy: function(d){ return y(d.y) }
@@ -142,15 +150,41 @@ app.directive('lineChart', function(){
         // men
         admitted = depts.easy.male.admitted + depts.hard.male.admitted
         applied = depts.easy.male.applied + depts.hard.male.applied
+        var blueBallData = {
+          x: proportions.easy.male * 100
+          , y: (admitted / applied) * 100
+        }
         svg.select(".blue-circles")
-          .data([{
-            x: proportions.easy.male * 100
-            , y: (admitted / applied) * 100
-          }])
+          .data([blueBallData])
           .attr({
             cx: function(d){ return x(d.x) }
             , cy: function(d){ return y(d.y) }
           })
+
+        var m = (blueBallData.y - redBallData.y ) / ( blueBallData.x - redBallData.x )
+          , b = blueBallData.y - m * blueBallData.x
+          , x1, x2 = { x: 100, y: 50 }
+        if(m === Infinity || m === -Infinity){
+          x1 = { x: blueBallData.x , y: 0}
+          x2 = { x: blueBallData.x , y: 100}
+        }else{
+          if( b >= 0 ) {
+            if( b <= 100 ) x1 = { x: 0, y: b }
+            else x1 = { x: (100 - b) / m, y: 100 }
+          }else{
+            x1 = { x: (-b / m), y: 0}
+          }
+          var yint = 100 * m + b // y value at 100=x
+          if( yint <= 100 && yint >= 0){
+            x2 = { x: 100, y: yint }
+          }else{
+            if(m > 0) x2 = { x: (100 - b) /m, y: 100}
+            else x2 = { x: (0 - b) /m, y: 0}
+          }
+        }
+        combinedSlope
+          .datum([x1, x2])
+          .attr('d', line)
       })
     }
   }

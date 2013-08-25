@@ -1,13 +1,15 @@
 app.directive('donut', function(){
 
-  var width = 75
-    , height = 75
-    , radius = width / 2
+  var width = 85
+    , height = 85
+    , radius = width / 2.3
+    , highlightRadius = width / 2
 
     //flatui colors
     , blue = '#3498DB'
     , black = '#2C3E50'
     , red = '#E74C3C'
+    , green = '#1abc9c'
     , labelSize = 12
     , middleText = 18
 
@@ -15,7 +17,7 @@ app.directive('donut', function(){
       .domain(['accepted', 'rejected'])
       .range([blue, red])
 
-    , arc = d3.svg.arc()
+    , donutArc = d3.svg.arc()
       .outerRadius(radius)
       .innerRadius(radius - 10)
 
@@ -33,21 +35,28 @@ app.directive('donut', function(){
     restrict: 'A' // E = Element, A = Attribute, C = Class, M = Comment
     , link: function(scope, elem, attrs) {
       var gender = attrs.gender
+        , oppGender = gender === 'female' ? 'male' : 'female'
         , rates = scope.rates
         , dept = attrs.department
         , depts = scope.departments
 
-      scope.$watch("departments.easy." + gender + ".admitted + departments.hard." + gender + ".admitted", function(val){
+      scope.$watch("proportions.easy.female + proportions.easy.male", function(val){
       d3.select(elem[0]).select("svg").remove()
-      var admitted, applied
+      var admitted, oppAdmitted, applied, oppApplied, highlight
 
       if(dept === 'combined'){
         admitted = depts.easy[gender].admitted + depts.hard[gender].admitted
         applied = depts.easy[gender].applied + depts.hard[gender].applied
+        oppAdmitted = depts.easy[oppGender].admitted + depts.hard[oppGender].admitted
+        oppApplied = depts.easy[oppGender].applied + depts.hard[oppGender].applied
       }else{ 
         admitted = rates[gender][dept]
         applied = 1
+        oppAdmitted = rates[oppGender][dept]
+        oppApplied = 1
       }
+
+      highlight = ( admitted / applied ) > ( oppAdmitted / oppApplied ) ? 0.3 : 0
       
       var data = [{ 
           accepted: 'rejected'
@@ -63,16 +72,21 @@ app.directive('donut', function(){
           .append("g")
             .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
 
-        , group = svg.selectAll("arc")
+      svg.append("circle")
+        .attr("r", highlightRadius)
+        .style('opacity', highlight)
+        .style("fill", green)
+
+      var group = svg.selectAll("arc")
           .data(pie(data)).enter().append("g")
           .attr("class", "arc")
 
-       group.append("path")
-         .attr("d", arc)
-         .style("fill", function(d) { return color(d.data.accepted) })
-         .attr("stroke", black)
+      group.append("path")
+        .attr("d", donutArc)
+        .style("fill", function(d) { return color(d.data.accepted) })
+        .attr("stroke", black)
 
-       group.append("text")
+      group.append("text")
          .attr("transform", function(d) { return "translate(" + textArc.centroid(d) + ")" })
          .attr("dy", ".35em")
          .attr("fill", '#34495e')
