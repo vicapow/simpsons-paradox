@@ -3,7 +3,7 @@ app.directive('donut', function(){
   var width = 85
     , height = 85
     , radius = width / 2.3
-    , highlightRadius = width / 2
+    , highlightRadius = width / 2.1
 
     //flatui colors
     , blue = '#3498DB'
@@ -58,6 +58,10 @@ app.directive('donut', function(){
 
       highlight = ( admitted / applied ) > ( oppAdmitted / oppApplied ) ? 0.6 : 0
       
+      if(highlight && dept === 'combined'){
+        // in simpson's paradox
+      }
+
       var data = [{ 
           accepted: 'rejected'
           , percent: (applied - admitted) / applied * 100
@@ -75,7 +79,9 @@ app.directive('donut', function(){
       svg.append("circle")
         .attr("r", highlightRadius)
         .style('opacity', highlight)
-        .style("fill", '#bdc3c7') 
+        .style("fill", 'none') 
+        .style('stroke', '#333')
+        .style('stroke-width', '4px')
 
       var group = svg.selectAll("arc")
           .data(pie(data)).enter().append("g")

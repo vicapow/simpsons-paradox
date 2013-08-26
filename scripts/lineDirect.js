@@ -63,7 +63,7 @@ app.directive('lineChart', function(){
       gXAxis.append("text")
         .attr("transform", " translate(" + (width / 2) + "," + (40) +  ")")
         .style("text-anchor", "middle")
-        .text('percent applied to easy dept')
+        .text('percent applied to easy department')
         .classed('x-axis-label')
 
 

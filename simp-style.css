@@ -75,7 +75,7 @@ body{
   bottom: 10px;
 }
 
-div.tooltip {   
+div.custom-tooltip {
   position: absolute;
   pointer-events: none; 
   text-align: center;

@@ -1,4 +1,4 @@
-var tooltip = d3.select(".tooltip")
+var tooltip = d3.select(".custom-tooltip")
 
 var accOrRej = function(d){
   return (d.id===0) ? "Yes" : "No"

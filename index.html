@@ -76,7 +76,7 @@
         </div>
       </div>
       <!-- the table -->
-      <div ng-include="'views/table.html'"></div> 
+      <div simpsons-table ng-include="'views/table.html'"></div>
       <p>The researchers discuss six departments, although they don't reveal which ones they were. Below, you can see how women were accepted at similar rates as men but applied to the more competetive departments...few women apply to </p>
       <div class="force-directed-container vis">
         <h4 style="text-align:center"> Departments </h3>
@@ -84,9 +84,9 @@
         <a class="btn btn-primary play-button" href="#">stop</a>
       </div>
       <!-- the bottom -->
-      <div class = "row" ng-include="'/views/bottom.html'"></div>
+      <div class="row" ng-include="'/views/bottom.html'"></div>
     </div><!-- /.container -->  
-    <div class="tooltip" style="opacity:0;"></div>
+    <div class="custom-tooltip" style="opacity:0;"></div>
   </body>
     <!-- libraries: js -->
     <script type="text/javascript" src="d3.js"></script>
@@ -94,7 +94,7 @@
     <script src="lib/angular.min.js"></script>
     <script src="Flat-UI-master/js/jquery-1.8.3.min.js"></script>
     <script src="Flat-UI-master/js/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="Flat-UI-master/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
     <!-- non-angular scripts -->
     <script src="line-chart.js"></script>
