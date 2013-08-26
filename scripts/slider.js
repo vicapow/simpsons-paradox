@@ -1,4 +1,10 @@
 app.directive("slider", function(){
+
+  var menToMale = {
+    "female": "women",
+    "male" : "men"
+  }
+
   return {
     restrict: 'A'
     , link: function(scope, elem, attrs, controller){
@@ -13,7 +19,7 @@ app.directive("slider", function(){
         scope.$apply(function(){
           scope.updateProportions(ui.value, attrs.gender)
         })
-      }).find('a').append('<div class="slider-label">' + attrs.gender + '</div>')
+      }).find('a').append('<div class="slider-label">' + menToMale[attrs.gender]+ '</div>')
     }
   }
 })

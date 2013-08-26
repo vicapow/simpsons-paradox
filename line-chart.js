@@ -1,6 +1,6 @@
 var margin = {top: 20, right: 10, bottom: 40, left: 40},
     width = 380 - margin.left - margin.right,
-    height = 250 - margin.top - margin.bottom;
+    height = 220 - margin.top - margin.bottom;
 
 
 var blue = '#3498DB'
@@ -65,7 +65,7 @@ var gXAxis = svg.append("g")
     .call(xAxis)
 
 gXAxis.append("text")
-  .attr("transform", " translate(" + width/2 + "," + (height + 35) +  ")")
+  .attr("transform", " translate(" + width/2 + "," + 35 +  ")")
   .style("text-anchor", "middle")
   .text("x");
 

@@ -26,6 +26,9 @@ h1{
   text-align: center;
   font-size: 60px;
 }
+blockquote{
+  font-size: 15px;
+}
 
 .donut-chart{
   text-anchor: middle;
@@ -110,6 +113,10 @@ text.year-ratio, text.combined-ratio{
 
 .force-directed-container{
   position: relative;
+}
+
+.container{
+  margin-bottom: 15px;
 }
 
 .slider-label{

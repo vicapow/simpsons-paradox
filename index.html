@@ -20,7 +20,6 @@
       </div>
       <div class="row">
         <div class="col-lg-6">
-          <h3>Berkeley Sex Discrimination Suit</h3>
           <p>In 1973, the University of California-Berkeley was sued for sex discrimination. The numbers looked pretty bad for old Berkeley: the graduate schools had just accepted 44% of male applicants but only 35% of female applicants. Keep in mind...this was an era of social tumult, and UC Berkeley was supposed to be at the vanguard of progressive social movements.</p>
 <!--           <div>
             <div style="height: 200px; overflow: hidden">
@@ -30,18 +29,18 @@
             </div>
            <p>UC Berkeley: bastion of equality...or <strong>hypocrisy?!</strong></p>
           </div> -->
-          <p>Fortunately, when a statistician, an anthropologist and a data processor looked at the evidence, their analysis pointed in the opposite direction:</p>
+          <p>When a statistician, an anthropologist and a data processor looked at the evidence, though, <a href="http://www.unc.edu/~nielsen/soci708/cdocs/Berkeley_admissions_bias.pdf">their analysis</a> pointed in the opposite direction:</p>
           <blockquote>
             <p>If the data are properly pooled...there is a small but statistically significant bias in favor of women.</p>
             <small>(p. 403)</small>
           </blockquote>
-          <p>It was a textbook case of <strong>Simpson's Paradox,</strong> which is some real Malcolm Galdwell-style counterintuitive social science.</p>
+          <p>It was a textbook case of <strong>Simpson's Paradox</strong>.</p>
         </div>
         <div class="col-lg-2">
           <div id = "donut-chart"></div>
         </div>
       </div>
-      <h3>Definition</h3>
+      <h4>Definition</h4>
       <div class="row">
         <div class="col-lg-6">
           <p>Every Simpson's paradox involves at least three variables:</p>
@@ -59,15 +58,15 @@
       </div>
       <div class="row">
         <div class = "col-lg-6" >
-            <h3>Proper Pooling</h3>
-            <p>By "properly pooled," the investigators at Berkeley meant "broken down by department." Men more often applied to science and engineering departments, while women inclined towards social sciences and humanities. Engineering departments require special technical skills but accept a large percentage of qualified applicants. In contrast, humanities departments only require a standard undergrad cirriculum but have fewer slots.</p>
+            <h4>Proper Pooling</h4>
+            <p>By "properly pooled," the investigators at Berkeley meant "broken down by department." Men more often applied to science departments, while women inclined towards humanities. Science departments require special technical skills but accept a large percentage of qualified applicants. In contrast, humanities departments only require a standard undergrad cirriculum but have fewer slots.</p>
             <p>The authors concluded that any sexism occurred before Berkeley ever saw the applications:</p>
             <blockquote>
             <p>Women are shunted by their socialization and education toward fields of graduate study that are generally more crowded, less productive of completed degrees, and less well funded, and that frequently offer poorer professional employment prospects.</p>
               <small>(p. 403)</small>
             </blockquote>
-            <h3>Illustration</h3>
-            <p>Suppose there are two departments: an easy one and a hard one ('hard' as in 'hard to get into'). Drag the sliders to determine what percentage of men and women apply to the easy one. Both departments prefer men to women, but if women all apply to the hard one, then their acceptance rate will drop.</p>
+            <h4>Illustration</h4>
+            <p>Suppose there are two departments: one easy, one hard ('hard' as in 'hard to get into'). Drag the sliders, located to the right, to set what percentage of men and women apply to the easy department. Both departments prefer women, but if too many women apply to the hard one, then their acceptance rate drops below the men's.</p>
         </div>
         <div class="col-lg-6" >
             <div line-chart></div>
@@ -77,9 +76,9 @@
       </div>
       <!-- the table -->
       <div simpsons-table ng-include="'views/table.html'"></div>
-      <p>The researchers discuss six departments, although they don't reveal which ones they were. Below, you can see how women were accepted at similar rates as men but applied to the more competetive departments...few women apply to </p>
+      <p>The researchers at Berkeley discuss six departments, although they don't reveal which ones they were. Below, you can see how women were accepted at similar rates as men but applied to the more competitive departments.</p>
       <div class="force-directed-container vis">
-        <h4 style="text-align:center"> Departments </h3>
+        <h4 style="text-align:center"> Departments </h4>
         <svg></svg>
         <a class="btn btn-primary play-button" href="#">stop</a>
       </div>

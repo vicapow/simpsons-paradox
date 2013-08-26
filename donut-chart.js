@@ -1,5 +1,5 @@
 var width = 400
-  , height = 325
+  , height = 300
   , radius = height / 4 
 
   , blue = '#3498DB'

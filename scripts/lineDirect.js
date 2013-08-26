@@ -2,7 +2,7 @@ app.directive('lineChart', function(){
 
   var margin = { top: 40, right: 20, bottom: 55, left: 45 }
     , width = 380 - margin.left - margin.right
-    , height = 360 - margin.top - margin.bottom
+    , height = 300 - margin.top - margin.bottom
     //flatui colors
     , blue = '#3498DB'
     , black = '#2C3E50'
@@ -53,7 +53,7 @@ app.directive('lineChart', function(){
       gYAxis.append("text")
         .attr("transform", " translate(" + (-35) + "," + (height / 2) + ") rotate(-90)")
         .style("text-anchor", "middle")
-        .text("percent admitted")
+        .text("% admitted")
 
       var gXAxis = svg.append("g")
         .attr("class", "x-axis")
@@ -63,7 +63,7 @@ app.directive('lineChart', function(){
       gXAxis.append("text")
         .attr("transform", " translate(" + (width / 2) + "," + (40) +  ")")
         .style("text-anchor", "middle")
-        .text('percent applied to easy department')
+        .text('% applied to easy department')
         .classed('x-axis-label')
 
 
