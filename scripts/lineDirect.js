@@ -8,7 +8,7 @@ app.directive('lineChart', function(){
     , black = '#2C3E50'
     , red = '#E74C3C'
     , purple = '#9b59b6'
-    , green = "#27ae60"
+    , green = '#27ae60'
 
     , x = d3.scale.linear()
       .domain([0,100])

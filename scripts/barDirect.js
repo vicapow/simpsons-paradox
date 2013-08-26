@@ -6,7 +6,8 @@ app.directive('bar', function(){
     , blue = '#3498DB'
     , black = '#2C3E50'
     , red = '#E74C3C'
-    , green = '#1abc9c'
+    , purple = '#9b59b6'
+    , green = '#27ae60'
 
   var x = d3.scale.linear()
             .range([0,width]);
@@ -49,7 +50,7 @@ app.directive('bar', function(){
         .attr({
           width: x
           , height: height
-          , fill: green            
+          , fill: gender === 'female' ? green : purple
         })
 
       scope.$watch("proportions.easy.female + proportions.easy.male", function(val){

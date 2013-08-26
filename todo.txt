@@ -1,18 +1,8 @@
 victor:
-  slider labels
-  reposition play button
-  make force-directed shorter
-  reduce for-cedirected padding
-  add a title that says "departments"
-  change colors of line graph
-  change colors of sliders to purple and green
-  EXPERIMENT: instead of red, try the dark blue color that flat UI uses for black
-  give the force directed graph a resposnnve width
 
 lewis:
   make the tooltip flatui style
   add pie charts in tooltips
-  add label to the top axis that says "departments."
   move the mouseover behavior for the donut charts into the tooltip?
   format blockquotes better
 
