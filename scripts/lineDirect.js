@@ -90,7 +90,7 @@ app.directive('lineChart', function(){
         ])
         .attr("class", "line")
         .attr("d", line)
-        .attr("stroke",purple)
+        .attr("stroke", green)
         .attr("stroke-width","1.5px")
 
       // men line
@@ -101,7 +101,7 @@ app.directive('lineChart', function(){
         ])
         .attr("class", "line")
         .attr("d", line)
-        .attr("stroke", green)
+        .attr("stroke", purple)
         .attr("stroke-width", "1.5px")
 
       // men ball
@@ -114,7 +114,7 @@ app.directive('lineChart', function(){
         .attr({
           'class': 'blue-circles'
           , r: 6
-          , fill: green
+          , fill: purple
           , stroke: "white"
         })
 
@@ -128,7 +128,7 @@ app.directive('lineChart', function(){
         .attr({
           class: "red-circles",
           r: 6
-          , fill: purple
+          , fill: green
           , stroke: 'white'
         })
 

@@ -97,11 +97,11 @@ text.year-ratio, text.combined-ratio{
 
 
 .ui-slider.female .ui-slider-range, .ui-slider.female .ui-slider-handle{
-  background-color: #9b59b6;
+  background-color: #27ae60;
 }
 
 .ui-slider.male .ui-slider-range, .ui-slider.male .ui-slider-handle{
-  background-color: #27ae60;
+  background-color: #9b59b6;
 }
 
 .ui-slider-handle{
