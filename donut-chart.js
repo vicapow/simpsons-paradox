@@ -1,6 +1,6 @@
 var width = 400
-  , height = 600
-  , radius = Math.min(width, height) / 2 * .7
+  , height = 325
+  , radius = height / 4 
 
   , blue = '#3498DB'
   , black = '#2C3E50'
@@ -22,7 +22,11 @@ var width = 400
 
   , arc = d3.svg.arc()
     .outerRadius(radius - 10)
-    .innerRadius(radius - 70)
+    .innerRadius(radius - 30)
+
+  , textArc = d3.svg.arc()
+    .outerRadius(radius - 30)
+    .innerRadius(radius - 65)
 
   , pie = d3.layout.pie()
     .sort(null)
@@ -32,7 +36,7 @@ var width = 400
     .attr("width", width)
     .attr("height", height)
     .append("g")
-      .attr("transform", "translate(" + width / 2 + "," + height / 4 + ")")
+      .attr("transform", "translate(" + width / 2 + "," + radius + ")")
 
   , gMale = svg.selectAll("arc")
     .data(pie(maleData))
@@ -45,10 +49,8 @@ gMale.append("path")
   .attr("stroke",black)
 
  gMale.append("text")
-  .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")" })
+  .attr("transform", function(d) { return "translate(" + textArc.centroid(d) + ")" })
   .attr("dy", ".35em")
-  .attr("fill",'white')
-  .attr("font-size","24px")
   .style("text-anchor", "middle")
   .text(function(d) { return d.data.percent + "%" })
 
@@ -56,9 +58,9 @@ gMale.append('text')
   .text("men")
   .attr("dy", ".35em")
   .attr({
-    fill: black,
-    "font-size":" 24px"
+    fill: black
     , "text-anchor": "middle"
+    , "transform": "translate(" + (-radius*1.3) + ",0)"
 })
 
 var gFemale = svg.selectAll("arc")
@@ -73,19 +75,18 @@ gFemale.append("path")
   .attr("stroke",black)
 
 gFemale.append("text")
-  .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")" })
+  .attr("transform", function(d) { return "translate(" + textArc.centroid(d) + ")" })
   .attr("dy", ".35em")
-  .attr("fill",'white')
-  .attr("font-size","24px")
   .style("text-anchor", "middle")
   .text(function(d) { return d.data.percent + "%" })
 
-gFemale.append('text')
-  .text("women")
-  .attr("dy", ".35em")
-  .attr({
-    "font-size":" 24px",
-    "text-anchor": "middle"
+  gFemale.append('text')
+    .text("women")
+    .attr("dy", ".35em")
+    .attr({
+      fill: black
+      , "text-anchor": "middle"
+      , "transform": "translate(" + (-radius*1.3) + ",0)"
   })
 
 d3.selectAll(".arc")

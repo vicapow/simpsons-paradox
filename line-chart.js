@@ -1,23 +1,26 @@
 var margin = {top: 20, right: 10, bottom: 40, left: 40},
     width = 380 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+    height = 250 - margin.top - margin.bottom;
 
 
-var blue = '#3498DB',
- red = '#E74C3C';
+var blue = '#3498DB'
+    , black = '#2C3E50'
+    , red = '#E74C3C'
+    , purple = '#9b59b6'
+    , green = "#27ae60"
 
 var blueData = [
-  {x: 1, y: 6, col: blue},
-  {x: 2, y: 7, col: blue},
-  {x: 3, y: 8, col: blue},
-  {x: 4, y: 9, col: blue},
+  {x: 1, y: 6, col: green},
+  {x: 2, y: 7, col: green},
+  {x: 3, y: 8, col: green},
+  {x: 4, y: 9, col: green},
 ];
 
 var redData = [
-  {x: 8, y: 1, col: red},
-  {x: 9, y: 2, col: red},
-  {x: 10, y: 3, col: red},
-  {x: 11, y: 4, col: red}
+  {x: 8, y: 1, col: purple},
+  {x: 9, y: 2, col: purple},
+  {x: 10, y: 3, col: purple},
+  {x: 11, y: 4, col: purple}
 ]
 
 var x = d3.scale.linear()
@@ -54,7 +57,6 @@ var gYAxis = svg.append("g")
 gYAxis.append("text")
   .attr("transform", " translate(" + -28 + "," + height/2 + ") rotate(-90)")
   .style("text-anchor", "middle")
-  .attr("font-size","18px")
   .text("y");
 
 var gXAxis = svg.append("g")
@@ -65,7 +67,6 @@ var gXAxis = svg.append("g")
 gXAxis.append("text")
   .attr("transform", " translate(" + width/2 + "," + (height + 35) +  ")")
   .style("text-anchor", "middle")
-  .attr("font-size","18px")
   .text("x");
 
 svg.append("path")
@@ -75,7 +76,7 @@ svg.append("path")
       ])
     .attr("class", "line")
     .attr("d", line)
-    .attr("stroke",red)
+    .attr("stroke",purple)
     .attr("stroke-width","1.5px")
 
 svg.append("path")
@@ -95,7 +96,7 @@ svg.append("path")
         {x: 6, y: 11}
       ])    .attr("class", "line")
     .attr("d", line)
-    .attr("stroke",blue)
+    .attr("stroke",green)
     .attr("stroke-width","1.5px");
 
 svg.append("g")
@@ -113,8 +114,8 @@ svg.append("g")
     cy: function(d, i){
       return y(d.y);
     },
-    fill: blue,
-    stroke: '#2C3E50'
+    fill: green,
+    stroke: 'white'
   });
 
 
@@ -132,8 +133,8 @@ svg.append("g")
     cy: function(d, i){
       return y(d.y);
     },
-    fill: red,
-    stroke: '#2C3E50'
+    fill: purple,
+    stroke: 'white'
   });
 
 

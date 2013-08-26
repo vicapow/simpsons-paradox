@@ -18,9 +18,18 @@
   display: none;
 }
 
+.line-chart{
+  font-color: '#2C3E50'
+}
+
 h1{
   text-align: center;
   font-size: 60px;
+}
+
+.donut-chart{
+  text-anchor: middle;
+  font-size: 20px;
 }
 
 .lead{
@@ -29,19 +38,9 @@ h1{
   margin-bottom: 20px;
 }
 
-.jumbotron{
-  margin-top: 20px;
-  padding-bottom: 30px;
-}
-
-blockquote{
-  background-color: #eee;
-}
-
-blockquote p{
-  font-size: 15px;
-  line-height: 20px;
-  color: #2C3E50;
+body{
+  font-size: 13px;
+  line-height: 1.3;
 }
 
 /*styles for the little line chart*/
@@ -52,6 +51,7 @@ blockquote p{
   fill: none;
   stroke: #2C3E50;
   shape-rendering: crispEdges;
+  stroke-width: 1px;
 }
 
 .arc path {
@@ -62,7 +62,7 @@ blockquote p{
 .x-axis-force path {
   fill: none;
   stroke: #2C3E50;
-  shape-rendering: crispEdges;
+  /*shape-rendering: crispEdges;*/
 }
 .x-axis-force .domain,
 .y-axis-force .domain {

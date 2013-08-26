@@ -1,5 +1,4 @@
 app.directive("slider", function(){
-
   
   return {
     restrict: 'A'
@@ -7,7 +6,7 @@ app.directive("slider", function(){
       $(elem).slider({
         min: 1
         , max: 100
-        , value: 1
+        , value: scope.proportions.easy[attrs.gender] * 100
         , orientation: "horizontal"
         , range: "min"
       })

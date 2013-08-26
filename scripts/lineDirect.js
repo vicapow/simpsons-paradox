@@ -1,12 +1,14 @@
 app.directive('lineChart', function(){
 
-  var margin = { top: 20, right: 20, bottom: 45, left: 45 }
+  var margin = { top: 40, right: 20, bottom: 45, left: 45 }
     , width = 380 - margin.left - margin.right
-    , height = 300 - margin.top - margin.bottom
+    , height = 360 - margin.top - margin.bottom
     //flatui colors
     , blue = '#3498DB'
     , black = '#2C3E50'
     , red = '#E74C3C'
+    , purple = '#9b59b6'
+    , green = "#27ae60"
 
     , x = d3.scale.linear()
       .domain([0,100])
@@ -51,7 +53,6 @@ app.directive('lineChart', function(){
       gYAxis.append("text")
         .attr("transform", " translate(" + (-35) + "," + (height / 2) + ") rotate(-90)")
         .style("text-anchor", "middle")
-        .attr("font-size","18px")
         .text("percent admitted")
 
       var gXAxis = svg.append("g")
@@ -62,7 +63,6 @@ app.directive('lineChart', function(){
       gXAxis.append("text")
         .attr("transform", " translate(" + (width / 2) + "," + (40) +  ")")
         .style("text-anchor", "middle")
-        .attr("font-size","18px")
         .text('percent easy dept')
         .classed('x-axis-label')
 
@@ -90,7 +90,7 @@ app.directive('lineChart', function(){
         ])
         .attr("class", "line")
         .attr("d", line)
-        .attr("stroke",red)
+        .attr("stroke",purple)
         .attr("stroke-width","1.5px")
 
       // men line
@@ -101,7 +101,7 @@ app.directive('lineChart', function(){
         ])
         .attr("class", "line")
         .attr("d", line)
-        .attr("stroke", blue)
+        .attr("stroke", green)
         .attr("stroke-width", "1.5px")
 
       // men ball
@@ -114,8 +114,8 @@ app.directive('lineChart', function(){
         .attr({
           'class': 'blue-circles'
           , r: 6
-          , fill: blue
-          , stroke: '#2C3E50'
+          , fill: green
+          , stroke: "white"
         })
 
       // women ball
@@ -128,8 +128,8 @@ app.directive('lineChart', function(){
         .attr({
           class: "red-circles",
           r: 6
-          , fill: red
-          , stroke: '#2C3E50'
+          , fill: purple
+          , stroke: 'white'
         })
 
       scope.$watch("proportions.easy.female + proportions.easy.male", function (val){
