@@ -3,7 +3,7 @@ var blue = '#3498DB',
  black = '#2C3E50'
 var margin = {top: 30, right: 10, bottom: 40, left: 40}
 
-var w = window.innerWidth * .6
+var w = $('.container').width()
   , h = 350
   , tempo = 500
   , data = {
@@ -74,7 +74,7 @@ var w = window.innerWidth * .6
   }
   , svg = d3.select('.vis svg')
       .attr('width', w  + margin.left + margin.right)
-      .attr('height', h + margin.top + margin.bottom)
+      .attr('height', h)
       .attr("class","force-directed")
 
   , gXAxis = svg.append("g")
@@ -494,19 +494,19 @@ function animFoci(foci, pos, duration){
 svg.append('text')
   .text('    = 10 applicants ')
   .attr({
-    x : 10
-    , y : h + margin.top
-    , class : 'legend-item1'
-  });
+    x: w
+    , y: h - 20
+    , class: 'legend-item1'
+  }).style('text-anchor','end')
 
 svg.append('circle')
   .attr('class','node')
   .attr({
-    'class': 'node',
-    r: node_radius
+    'class': 'node'
+    , r: node_radius
   })
-  .attr('cx', 4)
-  .attr('cy', h + margin.top - 4)
+  .attr('cx', w - 100)
+  .attr('cy', h - 23)
   .style('fill', "grey")
   .style('stroke', 'white')
   .style('stroke-width', 1)

@@ -1,6 +1,6 @@
 app.directive('lineChart', function(){
 
-  var margin = { top: 40, right: 20, bottom: 45, left: 45 }
+  var margin = { top: 40, right: 20, bottom: 55, left: 45 }
     , width = 380 - margin.left - margin.right
     , height = 360 - margin.top - margin.bottom
     //flatui colors
@@ -63,7 +63,7 @@ app.directive('lineChart', function(){
       gXAxis.append("text")
         .attr("transform", " translate(" + (width / 2) + "," + (40) +  ")")
         .style("text-anchor", "middle")
-        .text('percent easy dept')
+        .text('percent applied to easy dept')
         .classed('x-axis-label')
 
 

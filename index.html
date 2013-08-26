@@ -12,6 +12,8 @@
   </head>
   <body ng-app="mainApp">
     <div class="container" ng-controller="MainCtrl">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="vicapow">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
       <div class="title">
         <h1>Simpson's Paradox</h1>
         <p class="lead">Girls gone average. <br> Averages gone wild.</p>
@@ -69,14 +71,14 @@
         </div>
         <div class="col-lg-6" >
             <div line-chart></div>
-            <div slider class="ui-slider" gender="female" style="position: relative; left: 45px; width: 317px"></div>
-            <div slider class="ui-slider" gender="male" style="position: relative; left: 45px; width: 317px"></div>
+            <div slider class="ui-slider female" gender="female" style="position: relative; left: 45px; width: 317px"></div>
+            <div slider class="ui-slider male" gender="male" style="position: relative; left: 45px; width: 317px"></div>
         </div>
       </div>
       <!-- the table -->
       <div ng-include="'views/table.html'"></div> 
       <p>The researchers discuss six departments, although they don't reveal which ones they were. Below, you can see how women were accepted at similar rates as men but applied to the more competetive departments...few women apply to </p>
-      <div class="vis">
+      <div class="force-directed-container vis">
         <svg></svg>
         <a class="btn btn-primary play-button" href="#">stop</a>
       </div>
