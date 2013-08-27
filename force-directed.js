@@ -514,7 +514,7 @@ svg.append('text')
   .text('10 applicants =')
   .attr({
     x: w - 12
-    , y: h - 3
+    , y: h - 13
     , class: 'legend-item1'
   }).style('text-anchor','end')
 
@@ -525,7 +525,7 @@ svg.append('circle')
     , r: node_radius
   })
   .attr('cx', w - 2)
-  .attr('cy', h - 8)
+  .attr('cy', h - 18)
   .style('fill', 'grey')
   .style('stroke', 'white')
   .style('stroke-width', 1)
@@ -544,7 +544,7 @@ var legend = svg.selectAll(".legend")
   .enter().append("g")
     .attr("class", "legend")
     .attr("transform", function(d, i) {
-      return "translate(" + (w - 10) +  "," + (h - 58 + i * 20 ) + ")"
+      return "translate(" + (w - 10) +  "," + (h - 68 + i * 20 ) + ")"
     })
 
 legend.append("rect")
