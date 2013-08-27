@@ -19,7 +19,7 @@
       </div>
       <div class="row">
         <div class="col-lg-6">
-          <p>In 1973, the University of California-Berkeley was sued for sex discrimination. The numbers looked pretty bad for old Berkeley: the graduate schools had just accepted 44% of male applicants but only 35% of female applicants. Keep in mind...this was an era of social tumult, and UC Berkeley was supposed to be at the vanguard of progressive social movements.</p>
+          <p>In 1973, the University of California-Berkeley was sued for sex discrimination. The numbers looked pretty bad for old Berkeley: the graduate schools had just accepted 44% of male applicants but only 35% of female applicants. </p>
           <p>When a statistician, an anthropologist and a data processor looked at the evidence, though, <a href="http://www.unc.edu/~nielsen/soci708/cdocs/Berkeley_admissions_bias.pdf">their analysis</a> pointed in the opposite direction:</p>
           <blockquote>
             <p>If the data are properly pooled...there is a small but statistically significant bias in favor of women.</p>
@@ -59,15 +59,10 @@
             <h4>Illustration</h4>
             <p>Suppose there are two departments: one easy, one hard ('hard' as in 'hard to get into'). Drag the sliders, located to the right, to set what percentage of men and women apply to the easy department. Both departments prefer women, but if too many women apply to the hard one, then their acceptance rate drops below the men's.</p>
         </div>
-        <div class="col-lg-6" >
-            <div line-chart></div>
-            <div slider class="ui-slider female" gender="female" style="position: relative; left: 45px; width: 317px"></div>
-            <div slider class="ui-slider male" gender="male" style="position: relative; left: 45px; width: 317px"></div>
-        </div>
       </div>
       <!-- the table -->
       <div simpsons-table ng-include="'views/table.html'"></div>
-      <p>The researchers at Berkeley discuss six departments, although they don't reveal which ones they were. Below, you can see how women were accepted at similar rates as men but applied to the more competitive departments.</p>
+      <!-- <p>The researchers at Berkeley discuss six departments, although they don't reveal which ones they were. Below, you can see how women were accepted at similar rates as men but applied to the more competitive departments.</p> -->
       <div class="force-directed-container vis">
         <h4 style="text-align:center"> Departments </h4>
         <svg></svg>

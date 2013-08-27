@@ -397,8 +397,8 @@ var cl = function(row, col, fociId){
             })
       }
     ]
-    // a series of animations to seperate the nodes into departments
-    , seperateNodes = [
+    // a series of animations to separate the nodes into departments
+    , separateNodes = [
       // hide the combined ration labels
       function(){
         var dur = 250
@@ -461,7 +461,7 @@ var cl = function(row, col, fociId){
   , loop = function(){
       if(should_combine !== is_combined && !is_animating){
         is_animating = true
-        timeline = should_combine ? combineNodes : seperateNodes
+        timeline = should_combine ? combineNodes : separateNodes
         t = 0
       }
       if(is_animating){
@@ -475,7 +475,7 @@ var cl = function(row, col, fociId){
         }else {
           is_animating = false
           is_combined = should_combine
-          combineButton.innerText = should_combine ? 'seperate' : 'combine'
+          combineButton.innerText = should_combine ? 'separate' : 'combine'
           setTimeout(loop, 100)
         }
       // check is we should be animating every 100ms (note: this is hacky)
@@ -535,7 +535,7 @@ combineButton.onclick = function(e){
   e.preventDefault()
   if(!is_animating){
     should_combine = !should_combine
-    combineButton.innerText = should_combine ? 'seperate' : 'combine'
+    combineButton.innerText = should_combine ? 'separate' : 'combine'
   }
 };
 
