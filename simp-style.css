@@ -15,7 +15,13 @@
 }
 .foci{
   /* uncomment out to show foci for debugging */
-  display: none;
+  /*display: none;*/
+  stroke: yellow;
+  stroke-width: 10px;
+}
+
+.y-axis-force.tick.major{
+  text-anchor: end;
 }
 
 .line-chart{

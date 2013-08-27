@@ -2,12 +2,12 @@
 var blue = '#3498DB'
   , red = '#E74C3C'
   , black = '#2C3E50'
-  , margin = {top: 30, right: 10, bottom: 40, left: 40}
+  , margin = {top: 30, right: 10, bottom: 40, left: 50}
   , color = d3.scale.ordinal()
     .domain(['accepted', 'rejected'])
     .range([blue, red])
-  , w = $('.container').width()
-  , h = 350
+  , w = $('.force-directed-container').width()
+  , h = 400
   , tempo = 500
   , data = {
     'Women' : {
@@ -86,7 +86,7 @@ var blue = '#3498DB'
       .attr("class", "y-axis-force")
   , main = svg.append("g")
     .attr("class", "main")
-    .attr("transform","translate(" + margin.left + "," + margin.top + ")")
+    .attr("transform","translate(" + (margin.left - 18) + "," + margin.top + ")")
   //axes and bands
   , x = d3.scale.ordinal()
       .domain(cols.concat('combined'))
@@ -182,7 +182,7 @@ var blue = '#3498DB'
     return 'col-' + col.replace(/ /g, '').toLowerCase()
   }
   // make the radius of each node smaller as the number of nodes increases
-  , node_radius = 3 + 100 / num_nodes
+  , node_radius = 2 + 100 / num_nodes
 
 
 // create all the focal points for the different nodes
@@ -240,8 +240,6 @@ main.selectAll('circle' + '.node')
     .attr('cy', function(d) { return d.y })
     .attr('r', node_radius )
     .style('fill', function(d) { return colorScale(d.id) })
-    .style('stroke', 'white')
-    .style('stroke-width', 1)
 
 _.each(forces, function(force){ force.start() })
 
@@ -527,8 +525,6 @@ svg.append('circle')
   .attr('cx', w - 2)
   .attr('cy', h - 18)
   .style('fill', 'grey')
-  .style('stroke', 'white')
-  .style('stroke-width', 1)
 
 var combineButton = document.getElementsByClassName('combine-button')[0]
 combineButton.onclick = function(e){
