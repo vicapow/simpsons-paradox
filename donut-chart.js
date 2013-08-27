@@ -116,7 +116,7 @@ legend.append("rect")
   .style("fill", color)
 
 legend.append("text")
-  .attr("x", -6 )
+  .attr("x", -6)
   .attr("y", 9)
   .attr("dy", ".35em")
   .style("text-anchor", "end")
