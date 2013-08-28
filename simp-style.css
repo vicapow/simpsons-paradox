@@ -14,8 +14,8 @@
   display: block;
 }
 .foci{
-  /* uncomment out to show foci for debugging */
-  /*display: none;*/
+  /* comment out to show foci for debugging */
+  display: none;
   stroke: yellow;
   stroke-width: 10px;
 }
